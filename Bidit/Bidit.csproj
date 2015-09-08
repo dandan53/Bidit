@@ -232,6 +232,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Copy of list.html" />
+    <Content Include="Copy of login.html" />
     <Content Include="Copy of main.html" />
     <Content Include="Copy of main_header.html" />
     <Content Include="favicon.ico" />
@@ -261,6 +262,7 @@
     <Content Include="Scripts\app\controllers\listCtrl.js" />
     <Content Include="Scripts\app\controllers\loginCtrl.js" />
     <Content Include="Scripts\app\controllers\mainCtrl.js" />
+    <Content Include="Scripts\app\controllers\navbarCtrl.js" />
     <Content Include="Scripts\app\controllers\newBidCtrl.js" />
     <Content Include="Scripts\app\controllers\priceBidCtrl.js" />
     <Content Include="Scripts\app\controllers\settingsCtrl.js" />
