@@ -8,5 +8,15 @@
         }
     };
 
+    $scope.logout = function () {
+        $scope.user.username = "";
+        $scope.user.CID = 0;
+    };
+
     $scope.user = userDataService.getUserData();
+    
+    $scope.isLoggedIn = function () {
+        return userDataService.isLoggedIn();
+    };
+
 });

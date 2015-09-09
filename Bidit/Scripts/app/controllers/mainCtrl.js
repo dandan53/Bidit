@@ -1,4 +1,4 @@
-﻿app.controller('MainCtrl', function ($scope, $location, userDataService) {
+﻿app.controller('MainCtrl', function ($scope, $location, userDataService, stateService) {
 
     $scope.newBid = function (item) {
         if (userDataService.isLoggedIn()) {
@@ -9,4 +9,8 @@
     };
     
     $scope.user = userDataService.getUserData();
+
+    $scope.stateService = stateService;
+
+    stateService.setStateData("list");
 });

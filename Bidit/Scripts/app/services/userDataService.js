@@ -1,7 +1,7 @@
 ﻿app.service('userDataService', function () {
     var userData = {
         username: "",
-        CID: 0
+        CID: 0,
     };
 
     var getUserData = function () {

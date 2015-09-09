@@ -33,39 +33,12 @@
             $scope.user.username = data.User.Username;
             $scope.user.CID = data.User.CID;
             
+            $location.path('/#/');
+            
             //$scope.is_logged_in(true);
         } else {
             alert('שם משתמש או סיסמא אינם נכונים');
         }
-    };
-
-    //$scope.login = function () {      
-    //    Login.save({
-    //        Username: $scope.cred.Mail,
-    //        Password: $scope.cred.Password
-    //    }, function (data) {
-    //        if (data != null && data.User != null) {
-    //            $scope.username = data.Username;
-    //            $scope.is_logged_in(true);
-    //        } else {
-    //            alert(data.CID);
-    //        }
-    //    });
-    //};
-
-    $scope.logout = function () {
-        $scope.user.username = "";
-        $scope.user.CID = 0;
-
-        //$scope.is_logged_in(false);
-
-        //Login.save({
-        //    Username: $scope.item.Mail,
-        //    Password: $scope.item.Password
-        //}, function (data) {
-        //    $scope.is_logged_in(false);
-        //    alert(data.CID);
-        //});
     };
 
     $scope.cred = {};
