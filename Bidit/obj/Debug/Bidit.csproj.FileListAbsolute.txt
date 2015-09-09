@@ -67,4 +67,3 @@ c:\users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\zh-Hans\Sys
 c:\users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\zh-Hant\System.Spatial.resources.dll
 c:\users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\obj\Debug\Bidit.dll
 c:\users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\obj\Debug\Bidit.pdb
-c:\users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\obj\Debug\Bidit.csprojResolveAssemblyReference.cache
