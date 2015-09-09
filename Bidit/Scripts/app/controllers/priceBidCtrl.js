@@ -58,5 +58,10 @@
         $location.url('/');
     };
 
+
+    $scope.closePriceBidForm = function () {
+        $location.url('/');
+    };
+
 });
 
