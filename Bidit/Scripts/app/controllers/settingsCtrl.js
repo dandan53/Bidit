@@ -10,8 +10,7 @@
     };
 
     $scope.update_selected_option();
-
-
+    
     $scope.update_selected_subOption = function () {
         $scope.products = getProducts($scope.selectedSubOption.id);
         $scope.selectedProduct = $scope.products[0];
