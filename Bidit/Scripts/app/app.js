@@ -1,4 +1,4 @@
-﻿var app = angular.module("TodoApp", ["ngResource", "ngRoute"]);
+﻿var app = angular.module("TodoApp", ["ngResource", "ngRoute", "ngStorage"]);
     
 app.config(function ($routeProvider) {
     $routeProvider.

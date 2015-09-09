@@ -11,6 +11,8 @@
     $scope.logout = function () {
         $scope.user.username = "";
         $scope.user.CID = 0;
+
+        userDataService.save();
     };
 
     $scope.user = userDataService.getUserData();

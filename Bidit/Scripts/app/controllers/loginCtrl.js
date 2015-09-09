@@ -32,7 +32,9 @@
         if (data != null && data.User != null) {
             $scope.user.username = data.User.Username;
             $scope.user.CID = data.User.CID;
-            
+
+            userDataService.save();
+
             $location.path('/#/');
             
             //$scope.is_logged_in(true);

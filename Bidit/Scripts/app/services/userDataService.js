@@ -1,4 +1,4 @@
-﻿app.service('userDataService', function () {
+﻿app.service('userDataService', ['$localStorage', function (localStorage) {
     var userData = {
         username: "",
         CID: 0,
@@ -16,9 +16,21 @@
         }
     };
 
-    return {
-        isLoggedIn: isLoggedIn,
-        getUserData: getUserData
+    var save = function() {
+        localStorage.userData = userData;
     };
 
-});
+    var load = function() {
+        userData = localStorage.userData;
+    };
+
+    load();
+
+    return {
+        isLoggedIn: isLoggedIn,
+        getUserData: getUserData,
+        save: save,
+        load: load
+    };
+
+}]);
