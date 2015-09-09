@@ -66,8 +66,14 @@
                         <!-- <button class="btn" ng-click="openItemDetails(item)">
                                  <span class="glyphicon glyphicon-pencil"></span>  לפרטים
                              </button> -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="setCurrentItem(item)">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="setCurrentItem(item)">
                             לפרטים
+                        </button>
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="price_bid(item)">
+                            הגש הצעה
                         </button>
 
 
@@ -108,7 +114,7 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-md-3 col-md-offset-6">{{item.DueDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.DueDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
                     <div class="col-md-3">תאריך סיום המכרז:</div>
                 </div>
                 
@@ -125,7 +131,7 @@
             </div>
             
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"  ng-click="price_bid()">הגש הצעה</button>
+              <!--  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="price_bid()">הגש הצעה</button> -->
                 <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
             </div>
 

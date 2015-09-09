@@ -1,34 +1,13 @@
-﻿<div data-ng-include="'main_header.html'" style="width:100%; height:100%"></div>
-
-<div data-ng-controller="PricebidCtrl" style="width:100%; height:100%">
-
-    <h2>הגש הצעת מחיר  </h2>
-    <br/>
+﻿<div data-ng-controller="PricebidCtrl">
     
-    <h4> פרטי המכרז </h4>
-
-    <form>
-        <div>
-            <label>זמן סיום המכרז: {{item.DueDate | date:largeDate}}</label>
-        </div>
-        <div>
-            <label>כמות: {{item.Amount}}</label>
-        </div>
-        <div>
-            <label>מספר מכרז: {{item.Id}}</label>
-        </div>
-    </form>
+<div data-ng-include="'navbar.html'" ></div>
     
-    <h4> ההצעה שלך </h4>
-
-    <div>
-        <label>מחיר:</label>
-        <input type="number" data-ng-model="price" />
-    </div>
-
-    <hr>
-    <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="update_bid()">
-        <span class="glyphicon glyphicon-save"></span>  הצע מחיר
-    </button>
+<div class="container">
+    
+    <div data-ng-include="'main_header.html'" ></div>
+        
+    <div data-ng-include="'pricebid_form.html'"></div>
+    
+</div>
 
 </div>

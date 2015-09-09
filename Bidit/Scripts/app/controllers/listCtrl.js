@@ -2,9 +2,6 @@
 
     $scope.user = userDataService.getUserData();
 
-    $scope.openItemDetails = function (item) {
-    };
-
     $scope.currentItem = {};
     $scope.setCurrentItem = function (item) {
         $scope.currentItem = item;
@@ -89,26 +86,12 @@
 
     $scope.reset();
 
-    $scope.price_bid = function () {
+    $scope.price_bid = function (item) {
         if (userDataService.isLoggedIn()) {
-            $location.path('/pricebid/' + $scope.currentItem.Id);
+            $location.path('/pricebid/' + item.Id);            
         } else {
             alert('יש להיכנס למערכת');
         }
     };
-
-    $scope.he = {};
-    $scope.he.cat = "קטגוריה";
-    $scope.he.pri = "תאור פריט";
-    $scope.he.bes = "המחיר הטוב ביותר";
-    $scope.he.siu = "מועד סיום המכרז";
-    $scope.he.det = "לפרטים";
-
-    $scope.en = {};
-    $scope.en.cat = "category";
-    $scope.en.pri = "description";
-    $scope.en.bes = "best";
-    $scope.en.siu = "final";
-    $scope.en.det = "details";
-
+    
 });

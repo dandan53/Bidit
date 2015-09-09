@@ -1,0 +1,44 @@
+﻿<div class="container" ng-controller="PricebidCtrl" style="padding-top: 50px">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">הגשת הצעת מחיר</h3>
+                </div>
+                <div class="panel-body">
+                                  
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.Product}}</div>
+                        <div class="col-md-3">מוצר:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.Category}}</div>
+                        <div class="col-md-3">קטגוריה:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.ProductId}}</div>
+                        <div class="col-md-3">מספר מוצר:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.DueDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                        <div class="col-md-3">תאריך סיום המכרז:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.FirstPriceDisplay}}</div>
+                        <div class="col-md-3">המחיר הטוב ביותר:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.Id}}</div>
+                        <div class="col-md-3">מכרז מספר:</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
