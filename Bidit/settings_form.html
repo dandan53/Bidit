@@ -1,4 +1,4 @@
-﻿<div class="container" ng-controller="NewbidCtrl" style="padding-top: 30px">
+﻿<div class="container" ng-controller="SettingsCtrl" style="padding-top: 30px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="login-panel panel panel-default">
@@ -8,7 +8,7 @@
                 <div class="panel-body">
                       
                     <div class="checkbox">
-                        <input name="remember" type="checkbox" value="Remember Me"><p style="padding-right: 20px">מעוניין לקבל דואר אלקטרוני לעדכונים שוטפים</p>
+                        <input name="remember" type="checkbox" value="Remember Me" ng-model="userSettings.isEmailUpdates" ><p style="padding-right: 20px">מעוניין לקבל דואר אלקטרוני לעדכונים שוטפים</p>
                     </div>
                     
                     <hr/>

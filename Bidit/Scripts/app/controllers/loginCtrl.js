@@ -45,6 +45,7 @@
     $scope.cred = {};
     $scope.cred.username = "";
     $scope.cred.password = "";
+    $scope.cred.isRememberMe = true;
 
     $scope.settings = function () {
         if (userDataService.isLoggedIn()) {

@@ -16,7 +16,7 @@
                                 <input class="form-control" placeholder="סיסמה" name="password" type="password" ng-model="cred.password" value="">
                             </div>
                             <div class="checkbox">
-                                <input name="remember" type="checkbox" value="Remember Me"><p style="padding-right: 20px">זכור אותי</p>
+                                <input name="remember" type="checkbox" value="Remember Me" ng-model="cred.isRememberMe"><p style="padding-right: 20px">זכור אותי</p>
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <a href="" ng-click="login()" class="btn btn-lg btn-success btn-block">כניסה</a>

@@ -1,4 +1,8 @@
 ﻿app.controller('SettingsCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+
+    $scope.userSettings = {};
+    $scope.userSettings.isEmailUpdates = true;
+
     $scope.user = userDataService.getUserData();
 
     $scope.options = getCategories();
@@ -17,10 +21,6 @@
     };
 
     $scope.update_selected_subOption();
-
-    $scope.dueDate = new Date();
-
-    $scope.amount = 1;
 
     $scope.add_bid = function () {
 
