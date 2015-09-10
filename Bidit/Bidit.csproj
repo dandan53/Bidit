@@ -216,7 +216,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Copy of newbid.html" />
     <Content Include="newbid.html" />
     <Content Include="pricebid_form.html" />
     <Content Include="login.html" />
