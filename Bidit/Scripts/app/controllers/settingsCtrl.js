@@ -3,26 +3,42 @@
     $scope.userSettings = {};
     $scope.userSettings.isEmailUpdates = true;
 
-    $scope.user = userDataService.getUserData();
+    $scope.itemListLength = 0;
 
-    $scope.options = getCategories();
-    $scope.selectedOption = $scope.options[0];
+    $scope.addItemToList = function () {
 
-    $scope.update_selected_option = function () {
-        $scope.subOptions = getSubCategories($scope.selectedOption.id);
-        $scope.selectedSubOption = $scope.subOptions[0];
+        if (userDataService.isLoggedIn()) {
+            var product_name = $scope.selectedProduct.name;
+            if (product_name === 'הכל') {
+                alert('נא בחר מוצר');
+            }
+            else {
+                var newItem = {
+                    CategoryId: $scope.selectedOption.id,
+                    Category: $scope.selectedOption.name,
+                    SubCategoryId: $scope.selectedSubOption.id,
+                    SubCategory: $scope.selectedSubOption.name,
+                    Product: $scope.selectedProduct.name,
+                    ProductId: $scope.selectedProduct.id,
+                };
+
+                $scope.userSettings.itemList[$scope.itemListLength] = newItem;
+                $scope.itemListLength++;
+            }
+        } else {
+            alert('יש להיכנס למערכת');
+        }
+
     };
 
-    $scope.update_selected_option();
+
+    $scope.userSettings.itemList = {};
     
-    $scope.update_selected_subOption = function () {
-        $scope.products = getProducts($scope.selectedSubOption.id);
-        $scope.selectedProduct = $scope.products[0];
+    $scope.closeSettingsForm = function () {
+        $location.url('/');
     };
 
-    $scope.update_selected_subOption();
-
-    $scope.add_bid = function () {
+    $scope.saveSettings = function () {
 
         if (userDataService.isLoggedIn()) {
             var product_name = $scope.selectedProduct.name;
@@ -37,8 +53,6 @@
                     SubCategory: $scope.selectedSubOption.name,
                     Product: $scope.selectedProduct.name,
                     ProductId: $scope.selectedProduct.id,
-                    DueDate: $scope.dueDate,
-                    Amount: $scope.amount,
                     BidCID: $scope.user.CID
                 };
 
@@ -64,5 +78,24 @@
     function loadRemoteData() {
         $location.url('/');
     };
+
+    $scope.user = userDataService.getUserData();
+
+    $scope.options = getCategories();
+    $scope.selectedOption = $scope.options[0];
+
+    $scope.update_selected_option = function () {
+        $scope.subOptions = getSubCategories($scope.selectedOption.id);
+        $scope.selectedSubOption = $scope.subOptions[0];
+    };
+
+    $scope.update_selected_option();
+
+    $scope.update_selected_subOption = function () {
+        $scope.products = getProducts($scope.selectedSubOption.id);
+        $scope.selectedProduct = $scope.products[0];
+    };
+
+    $scope.update_selected_subOption();  
 
 });
