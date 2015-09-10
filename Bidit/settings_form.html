@@ -1,88 +1,47 @@
-﻿<div data-ng-include="'main_header.html'" style="width:100%; height:100%"></div>
+﻿<div class="container" ng-controller="NewbidCtrl" style="padding-top: 30px">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">הגדרות</h3>
+                </div>
+                <div class="panel-body">
+                      
+                    <div class="checkbox">
+                        <input name="remember" type="checkbox" value="Remember Me"><p style="padding-right: 20px">מעוניין לקבל דואר אלקטרוני לעדכונים שוטפים</p>
+                    </div>
+                    
+                    <hr/>
+                                
+                    <div class="row">
+                        <select class="col-md-3 col-md-offset-6" ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"/>
+                        <div class="col-md-3">קטגוריה:</div>
+                    </div>
+                
+                    <br/>
 
-<div style="width:100%; height:100%">
+                   <div class="row">
+                       <select class="col-md-3 col-md-offset-6" ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"/>
+                        <div class="col-md-3">תת קטגוריה:</div>
+                    </div>
 
-    <h2>הגדרות</h2>
-    <br/>
-    
-    <table>
-        <tr>
-            <td>
-                <label>מעוניין לקבל דואר אלקטרוני לעדכונים שוטפים:</label>
-            </td>
-            <td>
-                <input type="checkbox" data-ng-model="emailUpdates" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>קטגוריה:</label>
-            </td>
-            <td>
-                <select ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"></select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>תת קטגוריה:</label>
-            </td>
-            <td>
-                <select ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"></select>
-            </td>
-        </tr>
-         <tr>
-            <td>
-                <label>מוצר:</label>
-            </td>
-            <td>
-                <select ng-model="selectedProduct" ng-options="option.name for option in products"></select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>כמות:</label>
-            </td>
-            <td>
-                <input type="number" ng-model="amount" min="1"/>
-            </td>
-        </tr>
-         <tr>
-            <td>
-                <label>מועד סיום המכרז:</label>
-            </td>
-            <td>
-                <input type="datetime-local" ng-model="dueDate" placeholder="yyyy-MM-dd" min="2001-01-01" max="2013-12-31" required />            
-            </td>
-        </tr>
-    </table>
+                     <br/>
 
-    <!-- <form>
-        <div>
-            <label>קטגוריה:</label>
-            <select ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"></select>
+                   <div class="row">
+                       <select class="col-md-3 col-md-offset-6" ng-model="selectedProduct" ng-options="option.name for option in products"/>
+                        <div class="col-md-3">מוצר:</div>
+                    </div>
+                    
+                    <br/>
+                    
+                </div>
+                
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary" ng-click="addNewBid()">שמור</button>
+                    <button type="button" class="btn btn-default" ng-click="closeNewBidForm()">סגור</button>
+                </div>
+
+            </div>
         </div>
-        <div>
-            <label>תת קטגוריה:</label>
-            <select ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"></select>
-        </div>
-        <div>
-            <label>מוצר:</label>
-            <select ng-model="selectedProduct" ng-options="option.name for option in products"></select>
-        </div>
-        <div>
-            <label>כמות:</label>
-            <input type="number" ng-model="amount" min="1"/>
-        </div>
-        <div>
-            <label>מועד סיום המכרז:</label>
-            <input type="datetime-local" ng-model="dueDate"
-                   placeholder="yyyy-MM-dd" min="2001-01-01" max="2013-12-31" required />
-        </div>
-    </form>
-    -->
-    <hr>
-    <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="add_bid()">
-        <span class="glyphicon glyphicon-save"></span>  הוסף מכרז
-    </button>
+    </div>
 </div>
-

@@ -23,6 +23,18 @@
         }
     };
 
+    $scope.settings = function () {
+        if (userDataService.isLoggedIn()) {
+            $location.path('/settings/');
+        } else {
+            alert('יש להיכנס למערכת');
+        }
+    };
+
+    $scope.signup = function () {
+         $location.path('/signup/');
+    };
+
     $scope.user = userDataService.getUserData();
     
     $scope.isLoggedIn = function () {

@@ -1,0 +1,40 @@
+﻿<div class="container" ng-controller="SignupCtrl" style="padding-top: 30px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">רישום לאתר</h3>
+                </div>
+                <div class="panel-body">
+                                  
+                    <div class="row">
+                        <input class="col-md-5 col-md-offset-4" type="text" data-ng-model="newUser.username"/>
+                        <div class="col-md-3">שם משתמש:</div>
+                    </div>
+                
+                    <br/>
+
+                   <div class="row">
+                        <input class="col-md-5 col-md-offset-4" type="password" data-ng-model="newUser.password"/>
+                        <div class="col-md-3">סיסמה:</div>
+                    </div>
+
+                     <br/>
+
+                   <div class="row">
+                        <input class="col-md-5 col-md-offset-4" type="email" data-ng-model="newUser.email"/>
+                        <div class="col-md-3">מייל:</div>
+                    </div>
+                    
+                </div>
+                
+                <div class="panel-footer">
+                    <a href="" ng-click="register()" class="btn btn-lg btn-success btn-block">הירשם</a>
+<!--                    <button type="button" class="btn btn-primary" ng-click="register()">הירשם</button>
+                    <button type="button" class="btn btn-default" ng-click="closeNewBidForm()">סגור</button> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -216,6 +216,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="signup_form.html" />
+    <Content Include="Copy of signup.html" />
+    <Content Include="settings_form.html" />
     <Content Include="newbid.html" />
     <Content Include="pricebid_form.html" />
     <Content Include="login.html" />

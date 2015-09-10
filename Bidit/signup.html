@@ -1,40 +1,13 @@
-﻿<div data-ng-include="'main_header.html'" style="width:100%; height:100%"></div>
-
-<div style="width:100%; height:100%">
-
-    <h2>משתמש חדש</h2>
-    <br/>
+﻿<div data-ng-controller="SignupCtrl">
     
-    <table>
-        <tr>
-            <td>
-                <label>שם משתמש:</label>
-            </td>
-            <td>
-                <input type="text" ng-model="user.username" min="2"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>סיסמה:</label>
-            </td>
-            <td>
-                <input type="password" ng-model="user.password" min="3"/>
-            </td>
-        </tr>
-         <tr>
-            <td>
-                <label>דוא"ל:</label>
-            </td>
-            <td>
-                <input type="email" ng-model="user.email" min="3"/>
-            </td>
-        </tr>
-    </table>
-
-    <hr>
-    <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="register()">
-        <span class="glyphicon glyphicon-save"></span>  הירשם
-    </button>
+<div data-ng-include="'navbar.html'" ></div>
+    
+<div class="container">
+    
+    <div data-ng-include="'main_header.html'" ></div>
+        
+    <div data-ng-include="'signup_form.html'"></div>
+    
 </div>
 
+</div>

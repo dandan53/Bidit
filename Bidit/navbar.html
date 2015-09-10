@@ -14,7 +14,7 @@
     
     <!-- logged out -->
     <ul class="nav navbar-nav navbar-left" ng-show="!isLoggedIn()">
-        <li><a href="" ng-click="login()">הירשם</a></li>
+        <li><a href="" ng-click="signup()">הירשם</a></li>
         <li><a href="" ng-click="login()">התחבר</a></li>
         <li><a href="" ng-click="login()">שלום אורח</a></li>
     </ul>
@@ -28,7 +28,7 @@
     <!-- logged in -->
     <ul class="nav navbar-nav navbar-right"ng-show="isLoggedIn()">
         <li><a href="" ng-click="addNewBid()">הוסף מכרז חדש</a></li>
-        <li><a href="">הגדרות</a></li>
+        <li><a href="" ng-click="settings()">הגדרות</a></li>
     </ul>
 
     </div>

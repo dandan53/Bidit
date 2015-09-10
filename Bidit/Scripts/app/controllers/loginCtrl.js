@@ -37,7 +37,6 @@
 
             $location.path('/#/');
             
-            //$scope.is_logged_in(true);
         } else {
             alert('שם משתמש או סיסמא אינם נכונים');
         }
