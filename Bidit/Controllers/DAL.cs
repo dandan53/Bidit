@@ -83,7 +83,7 @@ namespace Bidit.Controllers
                 mailBody += ", \r\n";
                 mailBody += "מכרז מספר " + itemId + " מתחיל";
                 mailBody += ", \r\n";
-                mailBody += "מכרז על מוצר מספר " + productId + " מתחיל";
+                mailBody += "המכרז על מוצר מספר " + productId;
                 mailBody += ". \r\n";
 
                 // Sending an email
