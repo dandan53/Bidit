@@ -216,8 +216,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Copy of newbid.html" />
+    <Content Include="newbid.html" />
     <Content Include="pricebid_form.html" />
-    <Content Include="Copy of pricebid.html" />
     <Content Include="login.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -228,7 +229,7 @@
     <Content Include="main.html" />
     <Content Include="main_header.html" />
     <Content Include="navbar.html" />
-    <Content Include="newbid.html" />
+    <Content Include="newbid_form.html" />
     <Content Include="pricebid.html" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\forgetPasswordCtrl.js" />

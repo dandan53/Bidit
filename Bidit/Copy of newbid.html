@@ -1,0 +1,80 @@
+﻿<div data-ng-include="'main_header.html'" style="width:100%; height:100%"></div>
+
+<div style="width:100%; height:100%">
+
+    <h2>הוסף מכרז חדש</h2>
+    <br/>
+    
+    <table>
+        <tr>
+            <td>
+                <label>קטגוריה:</label>
+            </td>
+            <td>
+                <select ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>תת קטגוריה:</label>
+            </td>
+            <td>
+                <select ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"></select>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <label>מוצר:</label>
+            </td>
+            <td>
+                <select ng-model="selectedProduct" ng-options="option.name for option in products"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>כמות:</label>
+            </td>
+            <td>
+                <input type="number" ng-model="amount" min="1"/>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <label>מועד סיום המכרז:</label>
+            </td>
+            <td>
+                <input type="datetime-local" ng-model="dueDate" placeholder="yyyy-MM-dd" min="2001-01-01" max="2013-12-31" required />            
+            </td>
+        </tr>
+    </table>
+
+    <!-- <form>
+        <div>
+            <label>קטגוריה:</label>
+            <select ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"></select>
+        </div>
+        <div>
+            <label>תת קטגוריה:</label>
+            <select ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"></select>
+        </div>
+        <div>
+            <label>מוצר:</label>
+            <select ng-model="selectedProduct" ng-options="option.name for option in products"></select>
+        </div>
+        <div>
+            <label>כמות:</label>
+            <input type="number" ng-model="amount" min="1"/>
+        </div>
+        <div>
+            <label>מועד סיום המכרז:</label>
+            <input type="datetime-local" ng-model="dueDate"
+                   placeholder="yyyy-MM-dd" min="2001-01-01" max="2013-12-31" required />
+        </div>
+    </form>
+    -->
+    <hr>
+    <button class="btn btn-success" ng-disabled="error || incomplete" ng-click="add_bid()">
+        <span class="glyphicon glyphicon-save"></span>  הוסף מכרז
+    </button>
+</div>
+

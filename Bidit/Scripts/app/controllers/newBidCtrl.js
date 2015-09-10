@@ -23,7 +23,7 @@
 
     $scope.amount = 1;
 
-    $scope.add_bid = function () {
+    $scope.addNewBid = function () {
 
         if (userDataService.isLoggedIn()) {
             var product_name = $scope.selectedProduct.name;
@@ -63,6 +63,10 @@
     // I load the remote data from the server.
 
     function loadRemoteData() {
+        $location.url('/');
+    };
+    
+    $scope.closeNewBidForm = function () {
         $location.url('/');
     };
 
