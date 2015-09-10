@@ -15,6 +15,14 @@
         userDataService.save();
     };
 
+    $scope.addNewBid = function () {
+        if (userDataService.isLoggedIn()) {
+            $location.path('/newbid/');
+        } else {
+            alert('יש להיכנס למערכת');
+        }
+    };
+
     $scope.user = userDataService.getUserData();
     
     $scope.isLoggedIn = function () {

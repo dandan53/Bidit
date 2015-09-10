@@ -1,25 +1,35 @@
-﻿<nav class="navbar navbar-default" ng-controller="NavbarCtrl">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/#/">בידיט</a>
-        </div>
-        <div>
-            
-            <!-- logged out -->
-            <ul class="nav navbar-nav" ng-show="!isLoggedIn()">
-                <!--<li class="active"><a href="/#/">עמוד הבית</a></li>-->
-                <li><a href="" ng-click="login()">הירשם</a></li>
-                <li><a href="" ng-click="login()">התחבר</a></li>
-                <li><a href="" ng-click="login()">שלום אורח</a></li>
-            </ul>
-            
-            <!-- logged out -->
-            <ul class="nav navbar-nav" ng-show="isLoggedIn()">
-                <!--<li class="active"><a href="/#/">עמוד הבית</a></li>-->
-                <li><a href="" ng-click="logout()">התנתק</a></li>
-                <li><a href="">שלום {{user.username}} </a></li>
-            </ul>
+﻿<nav class="navbar navbar-default" role="navigation" ng-controller="NavbarCtrl">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand visible-xs"><a href="/#/">בידיט</a></div>
+    </div>
+    <div class="navbar-brand visible-sm text-center"><a href="/#/">בידיט</a></div>
+    <div class="navbar-brand navbar-center hidden-xs hidden-sm"><a href="/#/">בידיט</a></div>
 
-        </div>
+<div class="navbar-collapse collapse">
+    
+    <!-- logged out -->
+    <ul class="nav navbar-nav navbar-left" ng-show="!isLoggedIn()">
+        <li><a href="" ng-click="login()">הירשם</a></li>
+        <li><a href="" ng-click="login()">התחבר</a></li>
+        <li><a href="" ng-click="login()">שלום אורח</a></li>
+    </ul>
+    
+    <!-- logged in -->
+    <ul class="nav navbar-nav navbar-left" ng-show="isLoggedIn()">
+        <li><a href="" ng-click="logout()">התנתק</a></li>
+        <li><a href="">שלום {{user.username}} </a></li>
+    </ul>
+    
+    <!-- logged in -->
+    <ul class="nav navbar-nav navbar-right"ng-show="isLoggedIn()">
+        <li><a href="" ng-click="addNewBid()">הוסף מכרז חדש</a></li>
+        <li><a href="">הגדרות</a></li>
+    </ul>
+
     </div>
 </nav>
