@@ -87,11 +87,11 @@
     $scope.reset();
 
     $scope.price_bid = function (item) {
-        if (userDataService.isLoggedIn()) {
+        //if (userDataService.isLoggedIn()) {
             $location.path('/pricebid/' + item.Id);            
-        } else {
-            alert('יש להיכנס למערכת');
-        }
+        //} else {
+        //    alert('יש להיכנס למערכת');
+        //}
     };
     
 });
