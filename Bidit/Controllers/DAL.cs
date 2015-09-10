@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Timers;
 using System.Web;
 using Bidit.Models;
 
@@ -10,6 +11,7 @@ namespace Bidit.Controllers
     {
 
         private Dictionary<int, UserSettings> CIDToSettings = new Dictionary<int, UserSettings>();
+        private new Dictionary<int, List<int>> ProductIdToSubscriberCIDList = new Dictionary<int, List<int>>();
 
         private static DAL instance = null;
 
@@ -51,6 +53,42 @@ namespace Bidit.Controllers
                 item.BidUser = user;
                 item.FirstPriceDisplay = "--";
                 Items.Add(item);
+
+                NotifiySubscribers(item.ProductId);
+            }
+        }
+
+        public void NotifiySubscribers(int productId)
+        {
+            if (ProductIdToSubscriberCIDList != null && ProductIdToSubscriberCIDList.ContainsKey(productId))
+            {
+                var CIDList = ProductIdToSubscriberCIDList[productId];
+                foreach (var CID in CIDList)
+                {
+                    var user = GetUserByCID(CID);
+                    if (user != null)
+                    {
+                        SendEmail(user, productId);
+                    }
+                }
+            }
+        }
+
+        void SendEmail(User user, int productId)
+        {
+            try
+            {
+                string mailSubject = "מכרז חדש";
+                string mailBody = "שלום " + user.Username;
+                mailBody += ", \r\n";
+                mailBody += "מכרז על מוצר מספר " + productId + " מתחיל";
+                mailBody += ". \r\n";
+
+                // Sending an email
+                var isMailSent = EmailSender.SendMail(user.Email, mailSubject, mailBody);
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -875,7 +913,22 @@ namespace Bidit.Controllers
                     {
                         if (!settings.SubscribedProductIdDic.ContainsKey(entry.Key))
                         {
-                            settings.SubscribedProductIdDic.Add(entry.Key, entry.Value);                            
+                            settings.SubscribedProductIdDic.Add(entry.Key, entry.Value);
+
+                            if (ProductIdToSubscriberCIDList == null)
+                            {
+                                ProductIdToSubscriberCIDList = new Dictionary<int, List<int>>();
+                            }
+
+                            if (!ProductIdToSubscriberCIDList.ContainsKey(entry.Key))
+                            {
+                                ProductIdToSubscriberCIDList.Add(entry.Key, new List<int>());
+                            }
+
+                            if (!ProductIdToSubscriberCIDList[entry.Key].Contains(user.CID))
+                            {
+                                ProductIdToSubscriberCIDList[entry.Key].Add(user.CID);
+                            }
                         }
                     }
                 }
