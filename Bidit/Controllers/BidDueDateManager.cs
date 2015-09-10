@@ -69,12 +69,19 @@ namespace Bidit.Controllers
                     mailBody += "מכרז מספר " + item.Id + " הסתיים";
                     mailBody += ". \r\n";
                     mailBody += "המחיר הטוב ביותר: " + item.FirstPrice;
-                    
-                    // Sending an email
-                    var isMailSent = EmailSender.SendMail(item.BidUser.Email, mailSubject, mailBody);
-                    if (isMailSent)
+
+                    if (item.BidUser.IsEmailUpdates)
                     {
-                        items.Remove(item);                        
+                        // Sending an email
+                        var isMailSent = EmailSender.SendMail(item.BidUser.Email, mailSubject, mailBody);
+                        if (isMailSent)
+                        {
+                            items.Remove(item);
+                        }
+                    }
+                    else
+                    {
+                        items.Remove(item);
                     }
                 }
             }

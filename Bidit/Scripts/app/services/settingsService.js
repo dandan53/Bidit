@@ -1,8 +1,8 @@
-﻿app.service("SignupService", function ($http, $q) {
+﻿app.service("SettingsService", function ($http, $q) {
 
     // Return public API.
     return ({
-        register: register
+        saveSettings: saveSettings
     });
 
 
@@ -10,20 +10,23 @@
     // PUBLIC METHODS.
     // ---
 
-    function register(user) {
+
+    // I add a friend with the given name to the remote collection.
+    function saveSettings(settings) {
 
         var request = $http({
             method: "post",
-            url: "/api/register/",
+            url: "/api/settings/",
             data:
             {
-                Username: user.username,
-                Password: user.password,
-                Email: user.email
+                IsEmailUpdates: settings.isEmailUpdates,
+                SubscribedProductIdDic: settings.subscribedProductIdDic,
+                CID: settings.CID
             }
         });
 
         return (request.then(handleSuccess, handleError));
+
     }
 
     // ---
@@ -68,5 +71,4 @@
     }
 
 }
-);
-
+        );

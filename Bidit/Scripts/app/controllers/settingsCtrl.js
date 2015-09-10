@@ -1,11 +1,11 @@
-﻿app.controller('SettingsCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+﻿app.controller('SettingsCtrl', function ($scope, $location, $routeParams, Login, SettingsService, userDataService) {
 
     $scope.userSettings = {};
     $scope.userSettings.isEmailUpdates = true;
+    $scope.userSettings.itemToUpdatesDic = {};
+    $scope.itemToUpdatesDicLength = 0;
 
-    $scope.itemListLength = 0;
-
-    $scope.addItemToList = function () {
+    $scope.addItemToUpdatesDic = function () {
 
         if (userDataService.isLoggedIn()) {
             var product_name = $scope.selectedProduct.name;
@@ -13,64 +13,41 @@
                 alert('נא בחר מוצר');
             }
             else {
-                var newItem = {
-                    CategoryId: $scope.selectedOption.id,
-                    Category: $scope.selectedOption.name,
-                    SubCategoryId: $scope.selectedSubOption.id,
-                    SubCategory: $scope.selectedSubOption.name,
-                    Product: $scope.selectedProduct.name,
-                    ProductId: $scope.selectedProduct.id,
-                };
-
-                $scope.userSettings.itemList[$scope.itemListLength] = newItem;
-                $scope.itemListLength++;
+                var productId = $scope.selectedProduct.id;
+                $scope.userSettings.itemToUpdatesDic[$scope.itemToUpdatesDicLength] = productId;
+                $scope.itemToUpdatesDicLength++;
             }
         } else {
             alert('יש להיכנס למערכת');
         }
 
     };
-
-
-    $scope.userSettings.itemList = {};
+   
     
     $scope.closeSettingsForm = function () {
         $location.url('/');
     };
 
-    $scope.saveSettings = function () {
-
+    $scope.saveSettings = function () 
+    {
         if (userDataService.isLoggedIn()) {
-            var product_name = $scope.selectedProduct.name;
-            if (product_name === 'הכל') {
-                alert('נא בחר מוצר');
-            }
-            else {
-                var newBid = {
-                    CategoryId: $scope.selectedOption.id,
-                    Category: $scope.selectedOption.name,
-                    SubCategoryId: $scope.selectedSubOption.id,
-                    SubCategory: $scope.selectedSubOption.name,
-                    Product: $scope.selectedProduct.name,
-                    ProductId: $scope.selectedProduct.id,
-                    BidCID: $scope.user.CID
+            var settings = {
+                isEmailUpdates: $scope.userSettings.isEmailUpdates,
+                subscribedProductIdDic: $scope.userSettings.itemToUpdatesDic,
+                    CID: $scope.user.CID
                 };
 
-                bidService.addBid(newBid)
+            SettingsService.saveSettings(settings)
                                 .then(
                                     loadRemoteData,
                                     function (errorMessage) {
-
                                         console.warn(errorMessage);
-
                                     }
                                 );
 
-            }
         } else {
             alert('יש להיכנס למערכת');
         }
-
     };
 
     // I load the remote data from the server.

@@ -770,6 +770,7 @@ namespace Bidit.Controllers
                 Password = "1",
                 Email = "dandan53@gmail.com",
                 CID = 1,
+                IsEmailUpdates = true
             };
 
             List<Item> user1BidList = new List<Item>();
@@ -783,6 +784,7 @@ namespace Bidit.Controllers
                 Password = "2",
                 Email = "carmilaks@gmail.com",
                 CID = 2,
+                IsEmailUpdates = true
             };
 
             List<Item> user2BidList = new List<Item>();
@@ -796,6 +798,7 @@ namespace Bidit.Controllers
                 Password = "3",
                 Email = "chenvardi9@gmail.com",
                 CID = 3,
+                IsEmailUpdates = true
             };
 
             List<Item> user3AskList = new List<Item>();
