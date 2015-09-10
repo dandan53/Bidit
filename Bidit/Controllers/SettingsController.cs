@@ -14,16 +14,8 @@ namespace Bidit.Controllers
         {
             var retVal = new SettingsResult();
 
-            if (request != null)
-            {
-                //var user = DAL.Instance.GetUserByUsernameAndPassword(request.Username, request.Password);
-                //if (user != null && user.CID > 0)
-                //{
-                //    retVal.User = user;
-                //}
-                retVal.IsSuccess = true;
-            }
-
+            retVal.IsSuccess = DAL.Instance.SaveUserSettings(request);
+            
             return retVal;
         }
     }

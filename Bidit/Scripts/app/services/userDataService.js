@@ -2,6 +2,7 @@
     var userData = {
         username: "",
         CID: 0,
+        isEmailUpdates: true
     };
 
     var getUserData = function () {
@@ -27,6 +28,7 @@
             userData = {
                 username: "",
                 CID: 0,
+                isEmailUpdates: true
             };
         }
     };

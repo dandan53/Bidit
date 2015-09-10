@@ -8,11 +8,8 @@ namespace Bidit.Controllers
 {
     public sealed class DAL
     {
-        
-        private Dictionary<int, List<Item>> CIDToBidsListDic = new Dictionary<int, List<Item>>();
 
-        private Dictionary<int, List<Item>> CIDToAsksListDic = new Dictionary<int, List<Item>>();
-
+        private Dictionary<int, UserSettings> CIDToSettings = new Dictionary<int, UserSettings>();
 
         private static DAL instance = null;
 
@@ -85,17 +82,25 @@ namespace Bidit.Controllers
                         //updatedItem.ThirdAskUser = user;
                     }
 
-                    if (!CIDToAsksListDic.ContainsKey(user.CID))
+                    if (!CIDToSettings.ContainsKey(user.CID))
                     {
-                        CIDToAsksListDic.Add(user.CID, new List<Item>());
+                        var userSettings = new UserSettings { AskList = new List<Item>() };
+                        CIDToSettings.Add(user.CID, userSettings);
                     }
 
-                    if (CIDToAsksListDic[user.CID] == null)
+                    var settings = CIDToSettings[user.CID];
+                    if (settings == null)
                     {
-                        CIDToAsksListDic[user.CID] = new List<Item>();
+                        settings = new UserSettings { AskList = new List<Item>() };
                     }
 
-                    CIDToAsksListDic[user.CID].Add(updatedItem);
+                    var askList = settings.AskList;
+                    if (askList == null)
+                    {
+                        askList = new List<Item>();
+                    }
+
+                    askList.Add(updatedItem);
                 }
             }
             catch (Exception exception)
@@ -825,11 +830,61 @@ namespace Bidit.Controllers
                 user3AskList.Add(item);
             }
 
-            CIDToBidsListDic.Add(user1.CID, user1BidList);
-            CIDToBidsListDic.Add(user2.CID, user2BidList);
-            CIDToAsksListDic.Add(user3.CID, user3AskList);
+            var userSettings1 = new UserSettings {BidList = user1BidList};
+            CIDToSettings.Add(user1.CID, userSettings1);
+
+            var userSettings2 = new UserSettings { BidList = user2BidList };
+            CIDToSettings.Add(user2.CID, userSettings2);
+
+            var userSettings3 = new UserSettings { AskList = user3AskList };
+            CIDToSettings.Add(user3.CID, userSettings3);
+
+            //CIDToBidsListDic.Add(user1.CID, user1BidList);
+            //CIDToBidsListDic.Add(user2.CID, user2BidList);
+            //CIDToAsksListDic.Add(user3.CID, user3AskList);
         }
 
+
+        public bool SaveUserSettings(SettingsRequest request)
+        {
+            if (request != null)
+            {
+                var user = DAL.Instance.GetUserByCID(request.CID);
+                if (user != null && user.CID > 0)
+                {
+                    user.IsEmailUpdates = request.IsEmailUpdates;
+
+                    if (!CIDToSettings.ContainsKey(user.CID))
+                    {
+                        var userSettings = new UserSettings { SubscribedProductIdDic = new Dictionary<int, int>() };
+                        CIDToSettings.Add(user.CID, userSettings);
+                    }
+
+                    if (CIDToSettings[user.CID] == null)
+                    {
+                        CIDToSettings[user.CID] = new UserSettings { SubscribedProductIdDic = new Dictionary<int, int>() };
+                    }
+
+                    var settings = CIDToSettings[user.CID];
+                    if (settings.SubscribedProductIdDic == null)
+                    {
+                        settings.SubscribedProductIdDic = new Dictionary<int, int>();
+                    }
+
+                    foreach (KeyValuePair<int, int> entry in request.SubscribedProductIdDic)
+                    {
+                        if (!settings.SubscribedProductIdDic.ContainsKey(entry.Key))
+                        {
+                            settings.SubscribedProductIdDic.Add(entry.Key, entry.Value);                            
+                        }
+                    }
+                }
+
+                return true;
+            }
+
+            return false;
+        }
 
         // Register //
 

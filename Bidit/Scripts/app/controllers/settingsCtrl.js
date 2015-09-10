@@ -1,10 +1,10 @@
 ﻿app.controller('SettingsCtrl', function ($scope, $location, $routeParams, Login, SettingsService, userDataService) {
 
-    $scope.userSettings = {};
-    $scope.userSettings.isEmailUpdates = true;
-    $scope.userSettings.itemToUpdatesDic = {};
-    $scope.itemToUpdatesDicLength = 0;
+    $scope.user = userDataService.getUserData();
 
+    $scope.userSettings = {};
+    $scope.userSettings.isEmailUpdates = $scope.user.isEmailUpdates;
+    $scope.userSettings.itemToUpdatesDic = {};
     $scope.addItemToUpdatesDic = function () {
 
         if (userDataService.isLoggedIn()) {
@@ -14,8 +14,7 @@
             }
             else {
                 var productId = $scope.selectedProduct.id;
-                $scope.userSettings.itemToUpdatesDic[$scope.itemToUpdatesDicLength] = productId;
-                $scope.itemToUpdatesDicLength++;
+                $scope.userSettings.itemToUpdatesDic[productId] = productId;
             }
         } else {
             alert('יש להיכנס למערכת');
@@ -53,10 +52,9 @@
     // I load the remote data from the server.
 
     function loadRemoteData() {
+        $scope.user.isEmailUpdates = $scope.userSettings.isEmailUpdates;
         $location.url('/');
     };
-
-    $scope.user = userDataService.getUserData();
 
     $scope.options = getCategories();
     $scope.selectedOption = $scope.options[0];

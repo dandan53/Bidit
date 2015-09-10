@@ -160,6 +160,7 @@
     </Compile>
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
