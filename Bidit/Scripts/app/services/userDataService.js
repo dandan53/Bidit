@@ -22,6 +22,13 @@
 
     var load = function() {
         userData = localStorage.userData;
+        
+        if (userData === undefined) {
+            userData = {
+                username: "",
+                CID: 0,
+            };
+        }
     };
 
     load();
