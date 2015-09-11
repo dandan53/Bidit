@@ -30,7 +30,15 @@
             alert('יש להיכנס למערכת');
         }
     };
-
+    
+    $scope.privateArea = function () {
+        if (userDataService.isLoggedIn()) {
+            $location.path('/privatearea/');
+        } else {
+            alert('יש להיכנס למערכת');
+        }
+    };
+    
     $scope.signup = function () {
          $location.path('/signup/');
     };

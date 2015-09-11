@@ -17,7 +17,7 @@ namespace Bidit.Controllers
         //private List<Item> Items;
 
         // GET api/Items
-        public IEnumerable<Item> Get(int categoryId = 0, int subCategoryId = 1000, int productId = 0)
+        public IEnumerable<Item> Get(int categoryId = 0, int subCategoryId = 1000, int productId = 0, int CID = 0)
         {
             List<Item> Items = DAL.Instance.GetItems();
 

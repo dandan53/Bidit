@@ -2,12 +2,13 @@
     
 app.config(function ($routeProvider) {
     $routeProvider.
-         when('/', { controller: 'MainCtrl', templateUrl: 'main.html' }).
+         when('/', { controller: 'ListCtrl', templateUrl: 'main.html' }).
          when('/login', { controller: 'LoginCtrl', templateUrl: 'login.html' }).
          when('/newbid', { controller: 'NewbidCtrl', templateUrl: 'newbid.html' }).
          when('/pricebid/:id', { controller: 'PricebidCtrl', templateUrl: 'pricebid.html' }).
          when('/signup', { controller: 'SignupCtrl', templateUrl: 'signup.html' }).
          when('/settings', { controller: 'SettingsCtrl', templateUrl: 'settings.html' }).
+         when('/privatearea', { controller: 'PrivateListCtrl', templateUrl: 'private_main.html' }).
          otherwise({ redirectTo: '/' });
 });
 

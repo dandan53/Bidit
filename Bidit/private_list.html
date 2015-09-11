@@ -1,0 +1,142 @@
+﻿<!-- selecting table data area-->
+<div class="jumbotron" data-ng-controller="ListCtrl">
+    <div class="row" style="text-align: right">
+        <div>
+            
+            <div class="row">
+                <div class="col-md-3">
+                    <p ></p>
+                </div>
+
+                <div class="col-md-3">
+                    <p >מוצר:</p>
+                </div>
+                <div class="col-md-3">
+                    <p >תת קטגוריה:</p>
+                </div>
+                <div class="col-md-3">
+                    <p >קטגוריה:</p>
+                </div> 
+            </div>
+                
+            <div class="row">
+                <div class="col-md-3">
+                    <!--   <a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search" ng-click="search()"></span> חפש</a> -->
+                    <!-- <button type="button" class="btn btn-primary" ng-click="search()"> חפש </button> -->
+                    <button class="btn btn-primary" ng-click="search()">
+                        <span class="glyphicon glyphicon-search"></span>  חפש
+                    </button>
+
+                </div>
+                <div class="col-md-3">
+                    <select name="dataTables-exaple_length" aria-controls="dataTables-example" class="form-control input-sm"
+                            ng-model="selectedProduct" ng-options="option.name for option in products"></select>
+                </div>
+                <div class="col-md-3">
+                    <select name="dataTables-exaple_length" aria-controls="dataTables-example" class="form-control input-sm"
+                            ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"></select>
+                </div>
+                <div class="col-md-3">
+                    <select name="dataTables-exaple_length" aria-controls="dataTables-example" class="form-control input-sm"
+                            ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"></select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        
+    <div class="container" dir="rtl" "style="direction: rtl">
+       
+        <table class="table table-striped" dir="rtl" "style="direction: rtl">
+            <thead>
+                <tr>
+                    <th style="text-align: right">קטגוריה:</th>
+                    <th style="text-align: right">מוצר:</th>
+                    <th style="text-align: right">המחיר הטוב ביותר:</th>
+                    <th style="text-align: right">מועד סיום המכרז:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items" id="item_{{item.Id}}">
+                    <td>{{item.Category}}</td>
+                    <td>{{item.Product}}</td>
+                    <td>{{item.FirstPriceDisplay}}</td>
+                    <td>{{item.DueDate | date:largeDate}}</td>
+                    <td>
+                        <!-- <button class="btn" ng-click="openItemDetails(item)">
+                                 <span class="glyphicon glyphicon-pencil"></span>  לפרטים
+                             </button> -->
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="setCurrentItem(item)">
+                            לפרטים
+                        </button>
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="price_bid(item)">
+                            הגש הצעה
+                        </button>
+
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    
+    
+    <!-- Modal Item details-->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="text-align: center">{{currentItem.Product}}</h4>
+            </div>
+            
+            <div class="modal-body">
+                
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.Product}}</div>
+                    <div class="col-md-3">מוצר:</div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.Category}}</div>
+                    <div class="col-md-3">קטגוריה:</div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.ProductId}}</div>
+                    <div class="col-md-3">מספר מוצר:</div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.DueDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    <div class="col-md-3">תאריך סיום המכרז:</div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.FirstPriceDisplay}}</div>
+                    <div class="col-md-3">המחיר הטוב ביותר:</div>
+                </div>
+                
+               <div class="row">
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.Id}}</div>
+                    <div class="col-md-3">מכרז מספר:</div>
+                </div>
+
+            </div>
+            
+            <div class="modal-footer">
+              <!--  <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="price_bid()">הגש הצעה</button> -->
+                <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+</div>

@@ -218,8 +218,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="private_list.html" />
+    <Content Include="private_main.html" />
+    <Content Include="Scripts\app\controllers\privateListCtrl.js" />
     <Content Include="signup_form.html" />
-    <Content Include="Copy of signup.html" />
     <Content Include="settings_form.html" />
     <Content Include="newbid.html" />
     <Content Include="pricebid_form.html" />
@@ -239,14 +241,12 @@
     <Content Include="Scripts\app\controllers\forgetPasswordCtrl.js" />
     <Content Include="Scripts\app\controllers\listCtrl.js" />
     <Content Include="Scripts\app\controllers\loginCtrl.js" />
-    <Content Include="Scripts\app\controllers\mainCtrl.js" />
     <Content Include="Scripts\app\controllers\navbarCtrl.js" />
     <Content Include="Scripts\app\controllers\newBidCtrl.js" />
     <Content Include="Scripts\app\controllers\priceBidCtrl.js" />
     <Content Include="Scripts\app\controllers\settingsCtrl.js" />
     <Content Include="Scripts\app\controllers\signupCtrl.js" />
     <Content Include="Scripts\app\services\bidService.js" />
-    <Content Include="Scripts\app\services\stateService.js" />
     <Content Include="Scripts\app\services\forgetPasswordService.js" />
     <Content Include="Scripts\app\services\loginService.js" />
     <Content Include="Scripts\app\services\settingsService.js" />
