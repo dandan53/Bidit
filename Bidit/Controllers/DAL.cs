@@ -9,8 +9,8 @@ namespace Bidit.Controllers
 {
     public sealed class DAL
     {
-
-        private Dictionary<int, UserSettings> CIDToSettings = new Dictionary<int, UserSettings>();
+        private Dictionary<int, UserData> CIDToUserDataDic = new Dictionary<int, UserData>();
+        
         private new Dictionary<int, List<int>> ProductIdToSubscriberCIDList = new Dictionary<int, List<int>>();
 
         private static DAL instance = null;
@@ -122,25 +122,15 @@ namespace Bidit.Controllers
                         //updatedItem.ThirdAskUser = user;
                     }
 
-                    if (!CIDToSettings.ContainsKey(user.CID))
+                    if (CIDToUserDataDic.ContainsKey(user.CID))
                     {
-                        var userSettings = new UserSettings { AskList = new List<Item>() };
-                        CIDToSettings.Add(user.CID, userSettings);
-                    }
+                        if (CIDToUserDataDic[user.CID].AskIdToAskDic == null)
+                        {
+                            CIDToUserDataDic[user.CID].AskIdToAskDic = new Dictionary<int, Item>();
+                        }
 
-                    var settings = CIDToSettings[user.CID];
-                    if (settings == null)
-                    {
-                        settings = new UserSettings { AskList = new List<Item>() };
+                        CIDToUserDataDic[user.CID].AskIdToAskDic.Add(updatedItem.Id, updatedItem);
                     }
-
-                    var askList = settings.AskList;
-                    if (askList == null)
-                    {
-                        askList = new List<Item>();
-                    }
-
-                    askList.Add(updatedItem);
                 }
             }
             catch (Exception exception)
@@ -778,36 +768,73 @@ namespace Bidit.Controllers
         /// Users
         /// </summary>
 
-        private static List<User> Users;
-
         public User GetUserByUsernameAndPassword(string username, string password)
         {
-            User result = Users.Find(user => user.Username.Equals(username) && user.Password.Equals(password));
-            return result;
+            try
+            {
+                UserData userDataRes = CIDToUserDataDic.FirstOrDefault(userData => 
+                    userData.Value.User.Username.ToLower().Equals(username.ToLower()) 
+                    && userData.Value.User.Password.Equals(password)).Value;
+                if (userDataRes != null)
+                {
+                    return userDataRes.User;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public User GetUserByUsername(string username)
         {
-            User result = Users.Find(user => user.Username.Equals(username));
-            return result;
+            try
+            {
+                UserData userDataRes = CIDToUserDataDic.FirstOrDefault(userData =>
+                userData.Value.User.Username.ToLower().Equals(username.ToLower())).Value;
+                if (userDataRes != null)
+                {
+                    return userDataRes.User;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public User GetUserByEmail(string email)
         {
-            User result = Users.Find(user => user.Email.Equals(email.ToLower()));
-            return result;
+            try
+            {
+                UserData userDataRes = CIDToUserDataDic.FirstOrDefault(userData =>
+                userData.Value.User.Email.ToLower().Equals(email.ToLower())).Value;
+                if (userDataRes != null)
+                {
+                    return userDataRes.User;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public User GetUserByCID(int CID)
         {
-            User result = Users.Find(user => user.CID == CID);
-            return result;
+            UserData userDataRes = CIDToUserDataDic[CID];
+            if (userDataRes != null)
+            {
+                return userDataRes.User;
+            }
+            return null;
         }
 
         private void InitUsers()
         {
-            Users = new List<User>();
-
             // Bid
             User user1 = new User()
             {
@@ -818,9 +845,7 @@ namespace Bidit.Controllers
                 IsEmailUpdates = true
             };
 
-            List<Item> user1BidList = new List<Item>();
-
-            Users.Add(user1);
+            CIDToUserDataDic.Add(user1.CID, new UserData() {User = user1, BidIdToBidDic = new Dictionary<int, Item>()});
             
             // Bid
             User user2 = new User()
@@ -832,9 +857,7 @@ namespace Bidit.Controllers
                 IsEmailUpdates = true
             };
 
-            List<Item> user2BidList = new List<Item>();
-
-            Users.Add(user2);
+            CIDToUserDataDic.Add(user2.CID, new UserData() { User = user2, BidIdToBidDic = new Dictionary<int, Item>() });
 
             // Ask
             User user3 = new User()
@@ -846,9 +869,8 @@ namespace Bidit.Controllers
                 IsEmailUpdates = true
             };
 
-            List<Item> user3AskList = new List<Item>();
+            CIDToUserDataDic.Add(user3.CID, new UserData() { User = user3, AskIdToAskDic = new Dictionary<int, Item>() });
 
-            Users.Add(user3);
 
             var i = 0;
             var items = DAL.instance.GetItems();
@@ -858,32 +880,18 @@ namespace Bidit.Controllers
                 if (i % 2 == 0)
                 {
                     item.BidUser = user2;
-                    user2BidList.Add(item);
+                    CIDToUserDataDic[user2.CID].BidIdToBidDic.Add(item.Id, item);
                 }
                 else
                 {
                     item.BidUser = user1;
-                    user1BidList.Add(item);
+                    CIDToUserDataDic[user1.CID].BidIdToBidDic.Add(item.Id, item);
                 }
 
                 item.FirstAskUser = user3;
-                user3AskList.Add(item);
+                CIDToUserDataDic[user3.CID].AskIdToAskDic.Add(item.Id, item);
             }
-
-            var userSettings1 = new UserSettings {BidList = user1BidList};
-            CIDToSettings.Add(user1.CID, userSettings1);
-
-            var userSettings2 = new UserSettings { BidList = user2BidList };
-            CIDToSettings.Add(user2.CID, userSettings2);
-
-            var userSettings3 = new UserSettings { AskList = user3AskList };
-            CIDToSettings.Add(user3.CID, userSettings3);
-
-            //CIDToBidsListDic.Add(user1.CID, user1BidList);
-            //CIDToBidsListDic.Add(user2.CID, user2BidList);
-            //CIDToAsksListDic.Add(user3.CID, user3AskList);
         }
-
 
         public bool SaveUserSettings(SettingsRequest request)
         {
@@ -894,32 +902,18 @@ namespace Bidit.Controllers
                 {
                     user.IsEmailUpdates = request.IsEmailUpdates;
 
-                    if (!CIDToSettings.ContainsKey(user.CID))
+                    if (CIDToUserDataDic.ContainsKey(user.CID))
                     {
-                        var userSettings = new UserSettings { SubscribedProductIdDic = new Dictionary<int, int>() };
-                        CIDToSettings.Add(user.CID, userSettings);
-                    }
-
-                    if (CIDToSettings[user.CID] == null)
-                    {
-                        CIDToSettings[user.CID] = new UserSettings { SubscribedProductIdDic = new Dictionary<int, int>() };
-                    }
-
-                    var settings = CIDToSettings[user.CID];
-                    if (settings.SubscribedProductIdDic == null)
-                    {
-                        settings.SubscribedProductIdDic = new Dictionary<int, int>();
-                    }
-
-                    foreach (KeyValuePair<int, int> entry in request.SubscribedProductIdDic)
-                    {
-                        if (!settings.SubscribedProductIdDic.ContainsKey(entry.Key))
+                        if (CIDToUserDataDic[user.CID].SubscribedProductIdDic == null)
                         {
-                            settings.SubscribedProductIdDic.Add(entry.Key, entry.Value);
+                            CIDToUserDataDic[user.CID].SubscribedProductIdDic = new Dictionary<int, int>();
+                        }
 
-                            if (ProductIdToSubscriberCIDList == null)
+                        foreach (KeyValuePair<int, int> entry in request.SubscribedProductIdDic)
+                        {
+                            if (!CIDToUserDataDic[user.CID].SubscribedProductIdDic.ContainsKey(entry.Key))
                             {
-                                ProductIdToSubscriberCIDList = new Dictionary<int, List<int>>();
+                                CIDToUserDataDic[user.CID].SubscribedProductIdDic.Add(entry.Key, entry.Value);
                             }
 
                             if (!ProductIdToSubscriberCIDList.ContainsKey(entry.Key))
@@ -933,9 +927,9 @@ namespace Bidit.Controllers
                             }
                         }
                     }
-                }
 
-                return true;
+                    return true;
+                }
             }
 
             return false;
@@ -956,7 +950,7 @@ namespace Bidit.Controllers
                     Email = registerRequest.Email.ToLower()
                 };
 
-                Users.Add(user);
+                CIDToUserDataDic.Add(user.CID, new UserData() { User = user });
 
                 return user;
             }
@@ -964,9 +958,18 @@ namespace Bidit.Controllers
             return null;
         }
 
-        private static int CreateUserCId()
+        private int CreateUserCId()
         {
-            int retVal = Users.Max(i => i.CID);
+            int retVal = 0;
+
+            foreach (var userData in CIDToUserDataDic)
+            {
+                if (userData.Value.User.CID > retVal)
+                {
+                    retVal = userData.Value.User.CID;
+                }
+            }
+
             retVal++;
 
             return retVal;
