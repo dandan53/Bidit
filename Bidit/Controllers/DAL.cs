@@ -843,6 +843,24 @@ namespace Bidit.Controllers
             return null;
         }
 
+        public List<Item> GetUserItemListByCID(int CID, bool isBid)
+        {
+            List<Item> retVal = null;
+
+            UserData userData = CIDToUserDataDic[CID];
+            if (userData != null)
+            {
+                List<int> itemIdList = isBid ? userData.BidIdList : userData.AskIdList;
+
+                if (itemIdList != null && itemIdList.Count > 0)
+                {
+                    retVal = itemIdList.Select(id => ItemIdToItemDic[id]).ToList();
+                }
+            }
+
+            return retVal;
+        }
+
         private void InitUsers()
         {
             // Bid

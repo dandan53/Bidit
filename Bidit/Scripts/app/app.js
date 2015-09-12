@@ -8,7 +8,6 @@ app.config(function ($routeProvider) {
          when('/pricebid/:id', { controller: 'PricebidCtrl', templateUrl: 'pricebid.html' }).
          when('/signup', { controller: 'SignupCtrl', templateUrl: 'signup.html' }).
          when('/settings', { controller: 'SettingsCtrl', templateUrl: 'settings.html' }).
-         when('/privatearea', { controller: 'PrivateListCtrl', templateUrl: 'private_main.html' }).
          otherwise({ redirectTo: '/' });
 });
 

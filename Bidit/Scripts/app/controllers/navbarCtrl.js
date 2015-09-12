@@ -33,7 +33,8 @@
     
     $scope.privateArea = function () {
         if (userDataService.isLoggedIn()) {
-            $location.path('/privatearea/');
+            //$location.path('/privatearea/');
+            $location.path('/');
         } else {
             alert('יש להיכנס למערכת');
         }
