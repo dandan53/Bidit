@@ -3,6 +3,7 @@
 app.config(function ($routeProvider) {
     $routeProvider.
          when('/', { controller: 'ListCtrl', templateUrl: 'main.html' }).
+         when('/privatearea/:isBidUser', { controller: 'ListCtrl', templateUrl: 'main.html' }).
          when('/login', { controller: 'LoginCtrl', templateUrl: 'login.html' }).
          when('/newbid', { controller: 'NewbidCtrl', templateUrl: 'newbid.html' }).
          when('/pricebid/:id', { controller: 'PricebidCtrl', templateUrl: 'pricebid.html' }).

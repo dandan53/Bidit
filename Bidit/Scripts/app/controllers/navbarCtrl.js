@@ -31,10 +31,10 @@
         }
     };
     
-    $scope.privateArea = function () {
+    $scope.privateArea = function (isBidUser) {
         if (userDataService.isLoggedIn()) {
-            //$location.path('/privatearea/');
-            $location.path('/');
+            $location.path('/privatearea/' + isBidUser);
+            //$location.path('/');
         } else {
             alert('יש להיכנס למערכת');
         }

@@ -1,17 +1,21 @@
-﻿app.controller('ListCtrl', function ($scope, $location, Item, userDataService) {
+﻿app.controller('ListCtrl', function ($scope, $location, $routeParams, Item, userDataService) {
 
     $scope.user = userDataService.getUserData();
+
+    $scope.isBidUser = $routeParams.isBidUser;
 
     $scope.currentItem = {};
     $scope.setCurrentItem = function (item) {
         $scope.currentItem = item;
     };
 
-    $scope.get_items = function (categoryId, subCategoryId, productId) {
+    $scope.get_items = function (categoryId, subCategoryId, productId, CID, isBidUser) {
         Item.query({
             categoryId: categoryId,
             subCategoryId: subCategoryId,
-            productId: productId
+            productId: productId,
+            CID: CID,
+            isBidUser: isBidUser
         },
             function (data) {
                 $scope.items = data;
@@ -25,7 +29,12 @@
         var subCategoryId = $scope.selectedSubOption.id;
         var productId = $scope.selectedProduct.id;
 
-        $scope.get_items(categoryId, subCategoryId, productId);
+        var CID = 0;
+        if ($scope.isBidUser != undefined) {
+            CID = $scope.user.CID;
+        }
+
+        $scope.get_items(categoryId, subCategoryId, productId, CID, $scope.isBidUser);
     };
 
     $scope.sort = function (col) {
