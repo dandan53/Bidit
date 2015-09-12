@@ -13,6 +13,8 @@ namespace Bidit.Controllers
         
         private new Dictionary<int, List<int>> ProductIdToSubscriberCIDList = new Dictionary<int, List<int>>();
 
+        private Dictionary<int, Item> ItemIdToItemDic = new Dictionary<int, Item>();
+        
         private static DAL instance = null;
 
         private DAL()
@@ -37,11 +39,11 @@ namespace Bidit.Controllers
         /// Items
         /// </summary>
         
-        private static List<Item> Items;
+        
 
-        public List<Item> GetItems()
+        public Dictionary<int, Item> GetItems()
         {
-            return Items;
+            return ItemIdToItemDic;
         }
 
         public void AddItem(Item item)
@@ -52,7 +54,7 @@ namespace Bidit.Controllers
                 item.Id = CreateItemId();
                 item.BidUser = user;
                 item.FirstPriceDisplay = "--";
-                Items.Add(item);
+                ItemIdToItemDic.Add(item.Id, item);
 
                 NotifiySubscribers(item.ProductId, item.Id);
             }
@@ -124,12 +126,12 @@ namespace Bidit.Controllers
 
                     if (CIDToUserDataDic.ContainsKey(user.CID))
                     {
-                        if (CIDToUserDataDic[user.CID].AskIdToAskDic == null)
+                        if (CIDToUserDataDic[user.CID].AskIdList == null)
                         {
-                            CIDToUserDataDic[user.CID].AskIdToAskDic = new Dictionary<int, Item>();
+                            CIDToUserDataDic[user.CID].AskIdList = new List<int>();
                         }
 
-                        CIDToUserDataDic[user.CID].AskIdToAskDic.Add(updatedItem.Id, updatedItem);
+                        CIDToUserDataDic[user.CID].AskIdList.Add(updatedItem.Id);
                     }
                 }
             }
@@ -141,13 +143,14 @@ namespace Bidit.Controllers
 
         public Item GetItem(int id)
         {
-            //IEnumerable<Item> results = Items.Where(i => i.Id.Equals(id));
-
             Item result = null;
 
             try
             {
-                result = Items.First(item => item.Id == id);
+                if (ItemIdToItemDic.ContainsKey(id))
+                {
+                    result = ItemIdToItemDic[id];
+                }
             }
             catch (Exception)
             {
@@ -156,11 +159,20 @@ namespace Bidit.Controllers
             return result;
         }
 
-        private static int CreateItemId()
+        private int CreateItemId()
         {
-            int retVal = Items.Max(i => i.Id);
+            int retVal = 0;
+
+            foreach (var item in ItemIdToItemDic)
+            {
+                if (item.Key > retVal)
+                {
+                    retVal = item.Key;
+                }
+            }
+
             retVal++;
-            
+
             return retVal;
         }
 
@@ -171,10 +183,8 @@ namespace Bidit.Controllers
             InitUsers();
         }
         
-        private static void InitItems()
+        private void InitItems()
         {
-            Items = new List<Item>();
-
             Item item1 = new Item()
             {
                 Amount = 10,
@@ -190,7 +200,7 @@ namespace Bidit.Controllers
                 FirstPriceDisplay = "100"
             };
 
-            Items.Add(item1);
+            ItemIdToItemDic.Add(item1.Id, item1);
 
             Item item2 = new Item()
             {
@@ -207,7 +217,7 @@ namespace Bidit.Controllers
                 FirstPriceDisplay = "10"
             };
 
-            Items.Add(item2);
+            ItemIdToItemDic.Add(item2.Id, item2);
 
             Item item3 = new Item()
             {
@@ -224,7 +234,7 @@ namespace Bidit.Controllers
                 FirstPriceDisplay = "100"
             };
 
-            Items.Add(item3);
+            ItemIdToItemDic.Add(item3.Id, item3);
 
             Item item4 = new Item()
             {
@@ -241,7 +251,7 @@ namespace Bidit.Controllers
                 FirstPriceDisplay = "100"
             };
 
-            Items.Add(item4);
+            ItemIdToItemDic.Add(item4.Id, item4);
 
             Item item5 = new Item()
             {
@@ -258,7 +268,7 @@ namespace Bidit.Controllers
                 FirstPriceDisplay = "100"
             };
 
-            Items.Add(item5);
+            ItemIdToItemDic.Add(item5.Id, item5);
 
             Item item6 = new Item()
             {
@@ -275,7 +285,7 @@ namespace Bidit.Controllers
                 FirstPriceDisplay = "10"
             };
 
-            Items.Add(item6);
+            ItemIdToItemDic.Add(item6.Id, item6);
 
             Item item7 = new Item()
             {
@@ -292,7 +302,7 @@ namespace Bidit.Controllers
                 FirstPriceDisplay = "1000"
             };
 
-            Items.Add(item7);
+            ItemIdToItemDic.Add(item7.Id, item7);
 
             //Item item8 = new Item()
             //{
@@ -845,7 +855,7 @@ namespace Bidit.Controllers
                 IsEmailUpdates = true
             };
 
-            CIDToUserDataDic.Add(user1.CID, new UserData() {User = user1, BidIdToBidDic = new Dictionary<int, Item>()});
+            CIDToUserDataDic.Add(user1.CID, new UserData() {User = user1, BidIdList = new List<int>()});
             
             // Bid
             User user2 = new User()
@@ -857,7 +867,7 @@ namespace Bidit.Controllers
                 IsEmailUpdates = true
             };
 
-            CIDToUserDataDic.Add(user2.CID, new UserData() { User = user2, BidIdToBidDic = new Dictionary<int, Item>() });
+            CIDToUserDataDic.Add(user2.CID, new UserData() { User = user2, BidIdList = new List<int>() });
 
             // Ask
             User user3 = new User()
@@ -869,27 +879,28 @@ namespace Bidit.Controllers
                 IsEmailUpdates = true
             };
 
-            CIDToUserDataDic.Add(user3.CID, new UserData() { User = user3, AskIdToAskDic = new Dictionary<int, Item>() });
+            CIDToUserDataDic.Add(user3.CID, new UserData() { User = user3, AskIdList = new List<int>() });
 
 
             var i = 0;
             var items = DAL.instance.GetItems();
-            foreach (var item in items)
+            foreach (var itemPair in items)
             {
+                var item = itemPair.Value;
                 i++;
                 if (i % 2 == 0)
                 {
                     item.BidUser = user2;
-                    CIDToUserDataDic[user2.CID].BidIdToBidDic.Add(item.Id, item);
+                    CIDToUserDataDic[user2.CID].BidIdList.Add(item.Id);
                 }
                 else
                 {
                     item.BidUser = user1;
-                    CIDToUserDataDic[user1.CID].BidIdToBidDic.Add(item.Id, item);
+                    CIDToUserDataDic[user1.CID].BidIdList.Add(item.Id);
                 }
 
                 item.FirstAskUser = user3;
-                CIDToUserDataDic[user3.CID].AskIdToAskDic.Add(item.Id, item);
+                CIDToUserDataDic[user3.CID].AskIdList.Add(item.Id);
             }
         }
 
@@ -904,16 +915,16 @@ namespace Bidit.Controllers
 
                     if (CIDToUserDataDic.ContainsKey(user.CID))
                     {
-                        if (CIDToUserDataDic[user.CID].SubscribedProductIdDic == null)
+                        if (CIDToUserDataDic[user.CID].SubscribedProductIdList == null)
                         {
-                            CIDToUserDataDic[user.CID].SubscribedProductIdDic = new Dictionary<int, int>();
+                            CIDToUserDataDic[user.CID].SubscribedProductIdList = new List<int>();
                         }
 
                         foreach (KeyValuePair<int, int> entry in request.SubscribedProductIdDic)
                         {
-                            if (!CIDToUserDataDic[user.CID].SubscribedProductIdDic.ContainsKey(entry.Key))
+                            if (!CIDToUserDataDic[user.CID].SubscribedProductIdList.Contains(entry.Key))
                             {
-                                CIDToUserDataDic[user.CID].SubscribedProductIdDic.Add(entry.Key, entry.Value);
+                                CIDToUserDataDic[user.CID].SubscribedProductIdList.Add(entry.Key);
                             }
 
                             if (!ProductIdToSubscriberCIDList.ContainsKey(entry.Key))

@@ -53,36 +53,29 @@ namespace Bidit.Controllers
 
                 foreach (var item in items)
                 {
-                    int result = DateTime.Compare(DateTime.Now, item.DueDate);
+                    int result = DateTime.Compare(DateTime.Now, item.Value.DueDate);
                     bool isBidEnded = result > 0;
                     if (isBidEnded)
                     {
-                        itemsToRmove.Add(item);
-                    }     
-                }
+                        string mailSubject = "המכרז הסתיים";
+                        string mailBody = "שלום " + item.Value.BidUser.Username;
+                        mailBody += ", \r\n";
+                        mailBody += "מכרז מספר " + item.Value.Id + " הסתיים";
+                        mailBody += ". \r\n";
+                        mailBody += "המחיר הטוב ביותר: " + item.Value.FirstPrice;
 
-                foreach (var item in itemsToRmove)
-                {
-                    string mailSubject = "המכרז הסתיים";
-                    string mailBody = "שלום " + item.BidUser.Username;
-                    mailBody += ", \r\n";
-                    mailBody += "מכרז מספר " + item.Id + " הסתיים";
-                    mailBody += ". \r\n";
-                    mailBody += "המחיר הטוב ביותר: " + item.FirstPrice;
+                        item.Value.IsBidEnded = true;
 
-                    if (item.BidUser.IsEmailUpdates)
-                    {
-                        // Sending an email
-                        var isMailSent = EmailSender.SendMail(item.BidUser.Email, mailSubject, mailBody);
-                        if (isMailSent)
+                        if (item.Value.BidUser.IsEmailUpdates)
                         {
-                            items.Remove(item);
+                            // Sending an email
+                            var isMailSent = EmailSender.SendMail(item.Value.BidUser.Email, mailSubject, mailBody);
+                            if (isMailSent)
+                            {
+                                //items.Remove(item);
+                            }
                         }
-                    }
-                    else
-                    {
-                        items.Remove(item);
-                    }
+                    }     
                 }
             }
             catch (Exception ex)

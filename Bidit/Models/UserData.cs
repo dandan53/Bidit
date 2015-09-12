@@ -8,8 +8,8 @@ namespace Bidit.Models
     public class UserData
     {
         public User User { get; set; }
-        public Dictionary<int, Item> BidIdToBidDic { get; set; }
-        public Dictionary<int, Item> AskIdToAskDic { get; set; }
-        public Dictionary<int, int> SubscribedProductIdDic { get; set; }
+        public List<int> BidIdList { get; set; }
+        public List<int> AskIdList { get; set; }
+        public List<int> SubscribedProductIdList { get; set; }
     }
 }

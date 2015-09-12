@@ -1,4 +1,3 @@
-C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\obj\Debug\Bidit.csprojResolveAssemblyReference.cache
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Bidit.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Bidit.pdb
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Antlr3.Runtime.dll

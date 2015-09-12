@@ -20,6 +20,8 @@ namespace Bidit.Models
         public decimal FirstPrice { get; set; }
         public decimal SecondPrice { get; set; }
         public decimal ThirdPrice { get; set; }
+        public bool IsBidEnded { get; set; }
+
 
         public User BidUser { get; set; }
         public User FirstAskUser { get; set; }
