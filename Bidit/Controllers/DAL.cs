@@ -52,7 +52,7 @@ namespace Bidit.Controllers
             if (user != null)
             {
                 item.Id = CreateItemId();
-                item.BidUser = user;
+                item.BidCID = user.CID;
                 item.FirstPriceDisplay = "--";
                 ItemIdToItemDic.Add(item.Id, item);
 
@@ -890,16 +890,16 @@ namespace Bidit.Controllers
                 i++;
                 if (i % 2 == 0)
                 {
-                    item.BidUser = user2;
+                    item.BidCID = user2.CID;
                     CIDToUserDataDic[user2.CID].BidIdList.Add(item.Id);
                 }
                 else
                 {
-                    item.BidUser = user1;
+                    item.BidCID = user1.CID;
                     CIDToUserDataDic[user1.CID].BidIdList.Add(item.Id);
                 }
 
-                item.FirstAskUser = user3;
+                item.FirstAskCID = user3.CID;
                 CIDToUserDataDic[user3.CID].AskIdList.Add(item.Id);
             }
         }

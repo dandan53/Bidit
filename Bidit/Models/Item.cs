@@ -22,12 +22,6 @@ namespace Bidit.Models
         public decimal ThirdPrice { get; set; }
         public bool IsBidEnded { get; set; }
 
-
-        public User BidUser { get; set; }
-        public User FirstAskUser { get; set; }
-        public User SecondAskUser { get; set; }
-        public User ThirdAskUser { get; set; }
-
         public int BidCID { get; set; }
         public int FirstAskCID { get; set; }
         public int SecondAskCID { get; set; }

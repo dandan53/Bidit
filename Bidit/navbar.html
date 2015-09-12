@@ -10,28 +10,36 @@
     <div class="navbar-brand visible-sm text-center"><a href="/#/">בידיט</a></div>
     <div class="navbar-brand navbar-center hidden-xs hidden-sm"><a href="/#/">בידיט</a></div>
 
-<div class="navbar-collapse collapse">
+    <div class="navbar-collapse collapse">
     
-    <!-- logged out -->
-    <ul class="nav navbar-nav navbar-left" ng-show="!isLoggedIn()">
-        <li><a href="" ng-click="signup()">הירשם</a></li>
-        <li><a href="" ng-click="login()">התחבר</a></li>
-        <li><a href="" ng-click="login()">שלום אורח</a></li>
-    </ul>
+        <!-- logged out -->
+        <ul class="nav navbar-nav navbar-left" ng-show="!isLoggedIn()">
+            <li><a href="" ng-click="signup()">הירשם</a></li>
+            <li><a href="" ng-click="login()">התחבר</a></li>
+            <li><a href="" ng-click="login()">שלום אורח</a></li>
+        </ul>
     
-    <!-- logged in -->
-    <ul class="nav navbar-nav navbar-left" ng-show="isLoggedIn()">
-        <li><a href="" ng-click="logout()">התנתק</a></li>
-        <li><a href="">שלום {{user.username}} </a></li>
-    </ul>
+        <!-- logged in -->
+        <ul class="nav navbar-nav navbar-left" ng-show="isLoggedIn()">
+            <li><a href="" ng-click="logout()">התנתק</a></li>
+            <li><a href="">שלום {{user.username}} </a></li>
+        </ul>
     
-    <!-- logged in -->
-    <ul class="nav navbar-nav navbar-right"ng-show="isLoggedIn()">
-        <li><a href="" ng-click="addNewBid()">הוסף מכרז חדש</a></li>
-        <li><a href="" ng-click="settings()">הגדרות</a></li>
-        <li><a href="" ng-click="privateArea()">האזור האישי</a></li>
-
-    </ul>
-
+        <!-- logged in -->
+        <ul class="nav navbar-nav navbar-right"ng-show="isLoggedIn()">
+            <li><a href="" ng-click="addNewBid()">הוסף מכרז חדש</a></li>
+            <li><a href="" ng-click="settings()">הגדרות</a></li>
+            <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    האזור האישי <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="" ng-click="privateArea()">קונה</a></li>
+                    <li><a href="" ng-click="privateArea()">מוכר</a></li>
+                </ul>
+            </li>
+        </ul>
+    
     </div>
+
 </nav>

@@ -51,25 +51,28 @@ namespace Bidit.Controllers
                 var itemsToRmove = new List<Item>();
                 var items = DAL.Instance.GetItems();
 
-                foreach (var item in items)
+                foreach (var itemPair in items)
                 {
-                    int result = DateTime.Compare(DateTime.Now, item.Value.DueDate);
+                    var item = itemPair.Value;
+                    int result = DateTime.Compare(DateTime.Now, item.DueDate);
                     bool isBidEnded = result > 0;
                     if (isBidEnded)
                     {
+                        var bidUser = DAL.Instance.GetUserByCID(item.BidCID);
+                        
                         string mailSubject = "המכרז הסתיים";
-                        string mailBody = "שלום " + item.Value.BidUser.Username;
+                        string mailBody = "שלום " + bidUser.Username;
                         mailBody += ", \r\n";
-                        mailBody += "מכרז מספר " + item.Value.Id + " הסתיים";
+                        mailBody += "מכרז מספר " + item.Id + " הסתיים";
                         mailBody += ". \r\n";
-                        mailBody += "המחיר הטוב ביותר: " + item.Value.FirstPrice;
+                        mailBody += "המחיר הטוב ביותר: " + item.FirstPrice;
 
-                        item.Value.IsBidEnded = true;
+                        item.IsBidEnded = true;
 
-                        if (item.Value.BidUser.IsEmailUpdates)
+                        if (bidUser.IsEmailUpdates)
                         {
                             // Sending an email
-                            var isMailSent = EmailSender.SendMail(item.Value.BidUser.Email, mailSubject, mailBody);
+                            var isMailSent = EmailSender.SendMail(bidUser.Email, mailSubject, mailBody);
                             if (isMailSent)
                             {
                                 //items.Remove(item);
