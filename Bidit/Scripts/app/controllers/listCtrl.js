@@ -1,8 +1,10 @@
 ﻿app.controller('ListCtrl', function ($scope, $location, $routeParams, Item, userDataService) {
 
     $scope.user = userDataService.getUserData();
-
+    
     $scope.isBidUser = $routeParams.isBidUser;
+
+    $scope.isPublicMode = $scope.isBidUser === undefined;
 
     $scope.currentItem = {};
     $scope.setCurrentItem = function (item) {
@@ -30,7 +32,7 @@
         var productId = $scope.selectedProduct.id;
 
         var CID = 0;
-        if ($scope.isBidUser != undefined) {
+        if (!$scope.isPublicMode) {
             CID = $scope.user.CID;
         }
 

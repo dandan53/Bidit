@@ -218,9 +218,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="private_list_TEMP.html" />
-    <Content Include="private_main_TEMP.html" />
-    <Content Include="Scripts\app\controllers\privateListCtrl_TEMP.js" />
+    <Content Include="editbid.html" />
+    <Content Include="editbid_form.html" />
+    <Content Include="Scripts\app\controllers\editBidCtrl.js" />
     <Content Include="signup_form.html" />
     <Content Include="settings_form.html" />
     <Content Include="newbid.html" />
