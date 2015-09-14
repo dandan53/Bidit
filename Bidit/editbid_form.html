@@ -3,48 +3,49 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">הוספת מכרז חדש</h3>
+                    <h3 class="panel-title">עריכת מכרז קיים</h3>
                 </div>
                 <div class="panel-body">
                                   
+                   <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.Product}}</div>
+                        <div class="col-md-3">מוצר:</div>
+                    </div>
+                
                     <div class="row">
-                        <select class="col-md-3 col-md-offset-6" ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"/>
+                        <div class="col-md-3 col-md-offset-6">{{item.Category}}</div>
                         <div class="col-md-3">קטגוריה:</div>
                     </div>
                 
-                    <br/>
-
-                   <div class="row">
-                       <select class="col-md-3 col-md-offset-6" ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"/>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.SubCategory}}</div>
                         <div class="col-md-3">תת קטגוריה:</div>
                     </div>
 
-                     <br/>
-
-                   <div class="row">
-                       <select class="col-md-3 col-md-offset-6" ng-model="selectedProduct" ng-options="option.name for option in products"/>
-                        <div class="col-md-3">מוצר:</div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.ProductId}}</div>
+                        <div class="col-md-3">מספר מוצר:</div>
                     </div>
                     
                     <br/>
-                    
-                     <div class="row">
+
+                    <div class="row">
                         <input class="col-md-3 col-md-offset-6" type="number" data-ng-model="amount"  min="1"/>
                         <div class="col-md-3">כמות:</div>
                     </div>
                     
                     <br/>
-                    
+
                     <div class="row">
-                        <input class="col-md-5 col-md-offset-4" type="datetime-local" ng-model="dueDate" placeholder="yyyy-MM-dd" />          
+                        <input class="col-md-5 col-md-offset-4" type="datetime-local" data-ng-model="dueDateObj" placeholder="yyyy-MM-dd" />          
                         <div class="col-md-3">מועד סיום המכרז:</div>
                     </div>
                     
                 </div>
                 
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-primary" ng-click="addNewBid()">הוסף מכרז</button>
-                    <button type="button" class="btn btn-default" ng-click="closeNewBidForm()">סגור</button>
+                    <button type="button" class="btn btn-primary" ng-click="editBid()">ערוך מכרז</button>
+                    <button type="button" class="btn btn-default" ng-click="closeEditBidForm()">סגור</button>
                 </div>
 
             </div>

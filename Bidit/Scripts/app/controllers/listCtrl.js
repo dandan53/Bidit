@@ -102,7 +102,7 @@
     };
     
     $scope.editBid = function (item) {
-        $location.path('/editbid/' + item.Id);
+        $location.path('/editbid/' + item.Id + "/" + $scope.isBidUser);
     };
     
 });

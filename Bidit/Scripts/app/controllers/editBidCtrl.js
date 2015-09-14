@@ -1,11 +1,12 @@
 ﻿app.controller('EditbidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
-    $scope.bid_id = $routeParams.id;
+    $scope.bidId = $routeParams.id;
+    $scope.isBidUser = $routeParams.isBidUser;
 
-    $scope.get_bid = function () {
+    $scope.getBid = function () {
 
-        bidService.getBid($scope.bid_id)
+        bidService.getBid($scope.bidId)
                         .then(
                             loadData,
                             function (errorMessage) {
@@ -16,21 +17,22 @@
 
     function loadData(data) {
         $scope.item = data;
+
+        $scope.dueDateObj = new Date($scope.item.DueDate);
+        $scope.amount = $scope.item.Amount;
     };
 
-
-    $scope.get_bid();
-
-
-    $scope.update_bid = function () {
+    $scope.getBid();
+    
+    $scope.editBid = function () {
 
         if (userDataService.isLoggedIn()) {
-            var price = $scope.price;
-            if (price > 0) {
+            if ($scope.item.Amount != $scope.amount || new Date($scope.item.DueDate).getTime() != $scope.dueDateObj.getTime()) {
                 var updatedBid = {
-                    Id: $scope.bid_id,
-                    NewPrice: price,
-                    NewAskCID: $scope.user.CID
+                    Id: $scope.bidId,
+                    DueDate: $scope.dueDateObj,
+                    Amount: $scope.amount,
+                    BidCID: $scope.user.CID
                 };
 
                 bidService.updateBid(updatedBid)
@@ -44,7 +46,7 @@
                     );
 
             } else {
-                alert('נא הגש הצעה');
+                alert('לא נעשה שינוי במכרז');
             }
         } else {
             alert('יש להיכנס למערכת');
@@ -55,13 +57,16 @@
     // I load the remote data from the server.
 
     function loadRemoteData() {
-        $location.url('/');
+        $location.path('/privatearea/' + $scope.isBidUser);
     };
 
 
-    $scope.closePriceBidForm = function () {
-        $location.url('/');
+    $scope.closeEditBidForm = function () {
+        $location.path('/privatearea/' + $scope.isBidUser);
     };
+
+    $scope.dueDateObj = new Date();
+    $scope.amount = 0;
 
 });
 

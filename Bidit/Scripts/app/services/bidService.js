@@ -54,7 +54,10 @@
             {
                 Id: item.Id,
                 NewPrice: item.NewPrice,
-                NewAskCID: item.NewAskCID
+                NewAskCID: item.NewAskCID,
+                DueDate: item.DueDate,
+                Amount: item.Amount,
+                BidCID: item.BidCID
             }
         });
 
