@@ -10,8 +10,12 @@ namespace Bidit.Controllers
     public class EmailSender
     {
        public static bool SendMail(string email, string mailSubject, string mailBody)
-        {
-            var retVal = true;
+       {
+           // TEMP!!!
+           return false;
+
+           
+           var retVal = true;
 
             //Specify senders gmail address
             string SendersAddress = "chenvardi9@gmail.com";
