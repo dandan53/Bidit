@@ -1,59 +1,50 @@
-﻿<div class="container" ng-controller="PricebidCtrl" style="padding-top: 30px">
+﻿<div class="container" ng-controller="EditbidCtrl" style="padding-top: 30px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">הגשת הצעת מחיר</h3>
+                    <h3 class="panel-title">הוספת מכרז חדש</h3>
                 </div>
                 <div class="panel-body">
                                   
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-6">{{item.Product}}</div>
-                        <div class="col-md-3">מוצר:</div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-6">{{item.Category}}</div>
+                        <select class="col-md-3 col-md-offset-6" ng-model="selectedOption" ng-options="option.name for option in options" ng-change="update_selected_option()"/>
                         <div class="col-md-3">קטגוריה:</div>
                     </div>
                 
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-6">{{item.ProductId}}</div>
-                        <div class="col-md-3">מספר מוצר:</div>
+                    <br/>
+
+                   <div class="row">
+                       <select class="col-md-3 col-md-offset-6" ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"/>
+                        <div class="col-md-3">תת קטגוריה:</div>
                     </div>
-                
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-6">{{item.DueDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
-                        <div class="col-md-3">תאריך סיום המכרז:</div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-6">{{item.FirstPriceDisplay}}</div>
-                        <div class="col-md-3">המחיר הטוב ביותר:</div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-6">{{item.Id}}</div>
-                        <div class="col-md-3">מכרז מספר:</div>
+
+                     <br/>
+
+                   <div class="row">
+                       <select class="col-md-3 col-md-offset-6" ng-model="selectedProduct" ng-options="option.name for option in products"/>
+                        <div class="col-md-3">מוצר:</div>
                     </div>
                     
-                    <hr/>
-
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-6"></div>
-                        <h3 class="col-md-3">ההצעה שלך</h3>  
+                    <br/>
+                    
+                     <div class="row">
+                        <input class="col-md-3 col-md-offset-6" type="number" data-ng-model="amount"  min="1"/>
+                        <div class="col-md-3">כמות:</div>
                     </div>
-
+                    
+                    <br/>
+                    
                     <div class="row">
-                        <input class="col-md-3 col-md-offset-6" type="number" data-ng-model="price"  min="0"/>
-                        <div class="col-md-3">מחיר:</div>
+                        <input class="col-md-5 col-md-offset-4" type="datetime-local" ng-model="dueDate" placeholder="yyyy-MM-dd" />          
+                        <div class="col-md-3">מועד סיום המכרז:</div>
                     </div>
-
+                    
                 </div>
                 
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-primary" ng-click="update_bid()">הגש הצעה</button>
-                    <button type="button" class="btn btn-default" ng-click="closePriceBidForm()">סגור</button>
+                    <button type="button" class="btn btn-primary" ng-click="addNewBid()">הוסף מכרז</button>
+                    <button type="button" class="btn btn-default" ng-click="closeNewBidForm()">סגור</button>
                 </div>
 
             </div>
