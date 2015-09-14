@@ -1,4 +1,4 @@
-﻿app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+﻿app.controller('EditbidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
     $scope.bid_id = $routeParams.id;
