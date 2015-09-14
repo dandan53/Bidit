@@ -60,7 +60,7 @@
                 <tr ng-repeat="item in items" id="item_{{item.Id}}">
                     <td>{{item.Category}}</td>
                     <td>{{item.Product}}</td>
-                    <td>{{item.FirstPriceDisplay}}</td>
+                    <td>{{item.FirstPriceDisplay}} ₪</td>
                     <td>{{item.DueDate | date:largeDate}}</td>
                     <td>
                         <!-- <button class="btn" ng-click="openItemDetails(item)">
@@ -127,7 +127,7 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-md-3 col-md-offset-6">{{currentItem.FirstPriceDisplay}}</div>
+                    <div class="col-md-3 col-md-offset-6">{{currentItem.FirstPriceDisplay}} ₪</div>
                     <div class="col-md-3">המחיר הטוב ביותר:</div>
                 </div>
                 

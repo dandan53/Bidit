@@ -65,7 +65,7 @@ namespace Bidit.Controllers
                         mailBody += ", \r\n";
                         mailBody += "מכרז מספר " + item.Id + " הסתיים";
                         mailBody += ". \r\n";
-                        mailBody += "המחיר הטוב ביותר: " + item.FirstPrice;
+                        mailBody += "המחיר הטוב ביותר: " + item.FirstPrice + " ₪";
 
                         item.IsBidEnded = true;
 
