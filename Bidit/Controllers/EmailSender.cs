@@ -12,9 +12,8 @@ namespace Bidit.Controllers
        public static bool SendMail(string email, string mailSubject, string mailBody)
        {
            // TEMP!!!
-           return false;
+           return true;
 
-           
            var retVal = true;
 
             //Specify senders gmail address
