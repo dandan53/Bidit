@@ -9,6 +9,19 @@ namespace Bidit.Controllers
 {
     public class EmailSender
     {
+        public static bool PostMail(string email, string mailSubject, string mailBody)
+        {
+            //var textHtmlContent = EmailTemplate.ForgetPasswordEmail;
+            var textHtmlContent = EmailTemplate.BidEndedEmail;
+            textHtmlContent = textHtmlContent.Replace("USERNAME", "dan");
+            textHtmlContent = textHtmlContent.Replace("PASSWORD", "123123");
+            textHtmlContent = textHtmlContent.Replace("BID_ID", "23");
+            textHtmlContent = textHtmlContent.Replace("PRODUCT_NAME", "טלפון");
+            textHtmlContent = textHtmlContent.Replace("BEST_PRICE", "100");
+
+            SendMail(email, mailSubject, textHtmlContent);
+        }
+
        public static bool SendMail(string email, string mailSubject, string mailBody)
        {
            // TEMP!!!
@@ -45,6 +58,8 @@ namespace Bidit.Controllers
 
                 MailMessage message = new MailMessage(SendersAddress, ReceiversAddress, subject, body);
                 /*WE use smtp sever we specified above to send the message(MailMessage message)*/
+
+                message.IsBodyHtml = true;
 
                 smtp.Send(message);
             }
