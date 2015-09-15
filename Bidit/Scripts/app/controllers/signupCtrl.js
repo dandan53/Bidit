@@ -6,7 +6,8 @@
             var newUser = {
                 username: $scope.newUser.username,
                 password: $scope.newUser.password,
-                email: $scope.newUser.email
+                email: $scope.newUser.email,
+                phone: $scope.newUser.phone
             };
 
             SignupService.register(newUser)

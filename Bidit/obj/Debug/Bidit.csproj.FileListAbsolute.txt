@@ -135,6 +135,5 @@ C:\Users\danda\Desktop\Bidit\Bidit\bin\ko\System.Spatial.resources.dll
 C:\Users\danda\Desktop\Bidit\Bidit\bin\ru\System.Spatial.resources.dll
 C:\Users\danda\Desktop\Bidit\Bidit\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\danda\Desktop\Bidit\Bidit\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\danda\Desktop\Bidit\Bidit\obj\Debug\Bidit.csprojResolveAssemblyReference.cache
 C:\Users\danda\Desktop\Bidit\Bidit\obj\Debug\Bidit.dll
 C:\Users\danda\Desktop\Bidit\Bidit\obj\Debug\Bidit.pdb

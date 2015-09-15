@@ -59,20 +59,14 @@ namespace Bidit.Controllers
                     if (isBidEnded)
                     {
                         var bidUser = DAL.Instance.GetUserByCID(item.BidCID);
-                        
-                        string mailSubject = "המכרז הסתיים";
-                        string mailBody = "שלום " + bidUser.Username;
-                        mailBody += ", \r\n";
-                        mailBody += "מכרז מספר " + item.Id + " הסתיים";
-                        mailBody += ". \r\n";
-                        mailBody += "המחיר הטוב ביותר: " + item.FirstPrice + " ₪";
-
                         item.IsBidEnded = true;
-
                         if (bidUser.IsEmailUpdates)
                         {
+                            string mailSubject = "מכרז הסתיים באתר בידיט";
+                            string mailBody = EmailTemplate.BidEndedEmail;
+                            var askUser = DAL.Instance.GetUserByCID(item.FirstAskCID);
                             // Sending an email
-                            var isMailSent = EmailSender.SendMail(bidUser.Email, mailSubject, mailBody);
+                            var isMailSent = EmailSender.SendMail(mailSubject, mailBody, bidUser, item, askUser);
                             if (isMailSent)
                             {
                                 //items.Remove(item);

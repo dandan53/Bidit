@@ -115,6 +115,7 @@ namespace Bidit.Controllers
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:0px 0px 10px 0px'>
                                         סיסמה : <b>PASSWORD</b></td>
                                 </tr>
+                                <br/>
                                 <tr>
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:10px 0px 5px 0px;line-height:20px'>
                                         נשמח לעמוד לרשותך בטלפון 077-0-000-000
@@ -172,7 +173,7 @@ namespace Bidit.Controllers
                                 </tr>
                                 <tr>
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:20px 0px 3px 0px'>
-                                        :להלן פרטי המכרז
+                                        להלן פרטי המכרז:
                                     </td>
                                 </tr>
                                 <tr>
@@ -183,6 +184,15 @@ namespace Bidit.Controllers
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:0px 0px 10px 0px'>
                                         המחיר הטוב ביותר : <b>BEST_PRICE</b> ₪</td>
                                 </tr>
+                                <tr>
+                                    <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:0px 0px 10px 0px'>
+                                        שם המוכר : <b>BEST_PRICE_ASK_USERNAME</b> ₪</td>
+                                </tr>
+                                <tr>
+                                    <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:0px 0px 10px 0px'>
+                                        טלפון המוכר : <b>BEST_PRICE_ASK_PHONE</b> ₪</td>
+                                </tr>
+                                <br/>
                                 <tr>
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:10px 0px 5px 0px;line-height:20px'>
                                         נשמח לעמוד לרשותך בטלפון 077-0-000-000
@@ -207,7 +217,70 @@ namespace Bidit.Controllers
         </body>
     </html>";
 
+        public static string BidStartedEmail =
 
+           @"<html>
+        <head>
+            <title></title>
+        </head>
+        <body>
+            <table style='width:100%;height:auto;direction:rtl' cellpadding='0' cellspacing='0' border='0' width='100%' align='center'>
+                <tbody>
+            `     <tr>
+                    <td width='100%' align='center' style='background-color:deepskyblue;padding:0px;max-height:80px'>
+                        <!--<img src='pix/bid.jpg' alt='BidIt' border='0' style='max-width:137px;max-height:49px' img>-->
+                        <h1><a href='http://bidit.apphb.com/'>בידיט</a></h1>
+                    </td>
+                 </tr>
+                 <tr>
+                    <td width='80%' align='right' style='padding:10px 0px 0px 0px'>
+                        <table cellpadding='0' cellspacing='0' align='right' border='0' dir='rtl' width='100%'>
+                            <tbody>
+                                <tr>
+                                    <td width='100%' align='right' style='font-size:13px;font-family:Arial;direction:rtl;font-size:11pt;padding:10px 0px 0px 15px;color:#505050'>
+                                        <b>
+                                            שלום USERNAME,
+                                        </b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:20px 0px 3px 0px'>
+                                        מכרז מספר BID_ID נפתח.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:20px 0px 3px 0px'>
+                                        להלן פרטי המכרז:
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:15px 0px 5px 0px'>
+                                        מוצר : <b>PRODUCT_NAME</b></td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:10px 0px 5px 0px;line-height:20px'>
+                                        נשמח לעמוד לרשותך בטלפון 077-0-000-000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='100%' align='right' style='font-size:11pt;font-family:Arial;color:#505050;direction:rtl;padding:25px 0px 3px 0px'>
+                                        בברכה,
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='100%' align='right' style='font-size:11pt;font-family:Arial;direction:rtl;color:#505050;padding:0px 0px 30px 0px'>
+                                        צוות <span class='il'>בידיט</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+    </html>";
 
     }
 }

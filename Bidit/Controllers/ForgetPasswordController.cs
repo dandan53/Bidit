@@ -19,10 +19,10 @@ namespace Bidit.Controllers
                 var user = DAL.Instance.GetUserByEmail(request.Email);
                 if (user != null)
                 {
-                    const string subject = "שחזור סיסמה";
-                    string body = "הסיסמה שלך הינה: " + user.Password;
+                    const string subject = "שחזור סיסמה באתר בידיט";
+                    string body = EmailTemplate.ForgetPasswordEmail;
                     
-                    retVal.IsSuccess = EmailSender.SendMail(user.Email, subject, body);
+                    retVal.IsSuccess = EmailSender.SendMail(subject, body, user);
                 }
             }
 

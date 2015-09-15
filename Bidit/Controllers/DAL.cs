@@ -56,11 +56,11 @@ namespace Bidit.Controllers
                 item.FirstPriceDisplay = "--";
                 ItemIdToItemDic.Add(item.Id, item);
 
-                NotifiySubscribers(item.ProductId, item.Id);
+                NotifiySubscribers(item.ProductId, item);
             }
         }
 
-        public void NotifiySubscribers(int productId, int itemId)
+        public void NotifiySubscribers(int productId, Item item)
         {
             if (ProductIdToSubscriberCIDList != null && ProductIdToSubscriberCIDList.ContainsKey(productId))
             {
@@ -70,26 +70,21 @@ namespace Bidit.Controllers
                     var user = GetUserByCID(CID);
                     if (user != null)
                     {
-                        SendEmail(user, productId, itemId);
+                        SendEmail(user, productId, item);
                     }
                 }
             }
         }
 
-        void SendEmail(User user, int productId, int itemId)
+        void SendEmail(User user, int productId, Item item)
         {
             try
             {
-                string mailSubject = "מכרז חדש";
-                string mailBody = "שלום " + user.Username;
-                mailBody += ", \r\n";
-                mailBody += "מכרז מספר " + itemId + " מתחיל";
-                mailBody += ", \r\n";
-                mailBody += "המכרז על מוצר מספר " + productId;
-                mailBody += ". \r\n";
-
+                string mailSubject = "מכרז חדש נפתח באתר בידיט";
+                string mailBody = EmailTemplate.BidStartedEmail;
+                
                 // Sending an email
-                var isMailSent = EmailSender.SendMail(user.Email, mailSubject, mailBody);
+                var isMailSent = EmailSender.SendMail(mailSubject, mailBody, user, item);
             }
             catch (Exception ex)
             {

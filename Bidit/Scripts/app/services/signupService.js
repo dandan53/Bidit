@@ -19,7 +19,8 @@
             {
                 Username: user.username,
                 Password: user.password,
-                Email: user.email
+                Email: user.email,
+                Phone: user.phone
             }
         });
 
