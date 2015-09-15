@@ -220,6 +220,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="editbid.html" />
     <Content Include="editbid_form.html" />
+    <Content Include="pix\bid.jpg" />
     <Content Include="Scripts\app\controllers\editBidCtrl.js" />
     <Content Include="signup_form.html" />
     <Content Include="settings_form.html" />
