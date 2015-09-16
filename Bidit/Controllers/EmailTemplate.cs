@@ -104,7 +104,7 @@ namespace Bidit.Controllers
                                 </tr>
                                 <tr>
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:20px 0px 3px 0px'>
-                                        :להלן פרטי המשתמש שלך באתר
+                                        להלן פרטי המשתמש שלך באתר:
                                     </td>
                                 </tr>
                                 <tr>
@@ -182,15 +182,15 @@ namespace Bidit.Controllers
                                 </tr>
                                 <tr>
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:0px 0px 10px 0px'>
-                                        המחיר הטוב ביותר : <b>BEST_PRICE</b> ₪</td>
+                                        המחיר הטוב ביותר : <b>FIRST_PRICE</b> ₪</td>
                                 </tr>
                                 <tr>
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:0px 0px 10px 0px'>
-                                        שם המוכר : <b>BEST_PRICE_ASK_USERNAME</b> ₪</td>
+                                        שם המוכר : <b>FIRST_ASK_USER</b> </td>
                                 </tr>
                                 <tr>
                                     <td width='100%' align='right' style='font-family:Arial;font-size:11pt;direction:rtl;color:#505050;padding:0px 0px 10px 0px'>
-                                        טלפון המוכר : <b>BEST_PRICE_ASK_PHONE</b> ₪</td>
+                                        טלפון המוכר : <b>FIRST_ASK_PHONE</b> </td>
                                 </tr>
                                 <br/>
                                 <tr>

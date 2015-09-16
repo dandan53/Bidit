@@ -19,13 +19,13 @@ namespace Bidit.Controllers
             {
                 mailBody = mailBody.Replace("BID_ID", item.BidCID.ToString());
                 mailBody = mailBody.Replace("PRODUCT_NAME", item.Product);
-                mailBody = mailBody.Replace("BEST_PRICE", item.FirstPrice.ToString());
+                mailBody = mailBody.Replace("FIRST_PRICE", item.FirstPrice.ToString());
             }
             
             if (askUser != null) // TBD - case of no asks
             {
-                mailBody = mailBody.Replace("BEST_PRICE_ASK_USERNAME", askUser.Username);
-                mailBody = mailBody.Replace("BEST_PRICE_ASK_PHONE", askUser.Phone.ToString());
+                mailBody = mailBody.Replace("FIRST_ASK_USER", askUser.Username);
+                mailBody = mailBody.Replace("FIRST_ASK_PHONE", askUser.Phone.ToString());
             }
 
             var retVal = PostMail(user.Email, mailSubject, mailBody);

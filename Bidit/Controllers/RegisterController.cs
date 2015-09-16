@@ -21,10 +21,27 @@ namespace Bidit.Controllers
                 if (user != null && user.CID > 0)
                 {
                     retVal.User = user;
+
+                    SendEmail(user);
                 }
             }
 
             return retVal;
+        }
+
+        private void SendEmail(User user)
+        {
+            try
+            {
+                string mailSubject = "הרישום שלך לבידיט התבצע בהצלחה";
+                string mailBody = EmailTemplate.RegistrationEmail;
+
+                // Sending an email
+                var isMailSent = EmailSender.SendMail(mailSubject, mailBody, user);
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 

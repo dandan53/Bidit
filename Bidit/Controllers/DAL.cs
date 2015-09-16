@@ -97,6 +97,8 @@ namespace Bidit.Controllers
             User user;
             Item updatedItem;
 
+            // TBD - move the first to second, etc.
+
             try
             {
                 if (item.NewAskCID != 0)
@@ -109,19 +111,19 @@ namespace Bidit.Controllers
                         {
                             updatedItem.FirstPrice = item.NewPrice;
                             updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                            //updatedItem.FirstAskUser = user;
+                            updatedItem.FirstAskCID = user.CID;
                         }
                         else if (updatedItem.SecondPrice == 0 || item.NewPrice < updatedItem.SecondPrice)
                         {
                             updatedItem.SecondPrice = item.NewPrice;
-                            updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                            //updatedItem.SecondAskUser = user;
+                            //updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                            updatedItem.SecondAskCID = user.CID;
                         }
                         else if (updatedItem.ThirdPrice == 0 || item.NewPrice < updatedItem.ThirdPrice)
                         {
                             updatedItem.ThirdPrice = item.NewPrice;
-                            updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                            //updatedItem.ThirdAskUser = user;
+                           // updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                            updatedItem.ThirdAskCID = user.CID;
                         }
 
                         if (CIDToUserDataDic.ContainsKey(user.CID))
@@ -889,7 +891,8 @@ namespace Bidit.Controllers
                 Password = "1",
                 Email = "dandan53@gmail.com",
                 CID = 1,
-                IsEmailUpdates = true
+                IsEmailUpdates = true,
+                Phone = "052-610235454"
             };
 
             CIDToUserDataDic.Add(user1.CID, new UserData() {User = user1, BidIdList = new List<int>()});
@@ -901,7 +904,8 @@ namespace Bidit.Controllers
                 Password = "2",
                 Email = "carmilaks@gmail.com",
                 CID = 2,
-                IsEmailUpdates = true
+                IsEmailUpdates = true,
+                Phone = "052-610235454"
             };
 
             CIDToUserDataDic.Add(user2.CID, new UserData() { User = user2, BidIdList = new List<int>() });
@@ -913,7 +917,8 @@ namespace Bidit.Controllers
                 Password = "3",
                 Email = "chenvardi9@gmail.com",
                 CID = 3,
-                IsEmailUpdates = true
+                IsEmailUpdates = true,
+                Phone = "052-610235454"
             };
 
             CIDToUserDataDic.Add(user3.CID, new UserData() { User = user3, AskIdList = new List<int>() });
