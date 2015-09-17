@@ -45,7 +45,7 @@
                 
                 <div class="panel-footer">
                     <button type="button" class="btn btn-primary" ng-click="editBid()">ערוך מכרז</button>
-                    <button type="button" class="btn btn-danger" ng-click="removeBid()">הסר מכרז</button>
+                    <button type="button" class="btn btn-danger" ng-show={{isBidUser}} ng-click="removeBid()">הסר מכרז</button>
                     <button type="button" class="btn btn-default" ng-click="closeEditBidForm()">סגור</button>
                 </div>
 

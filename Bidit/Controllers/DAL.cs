@@ -122,18 +122,22 @@ namespace Bidit.Controllers
                         updatedItem = GetItem(item.Id);
                         if (updatedItem != null && user != null)
                         {
-                            if (CIDToUserDataDic[user.CID].HistoryBidIdList == null)
+                            var userData = CIDToUserDataDic[item.BidCID];
+                            if (userData != null && userData.BidIdList != null && userData.BidIdList.Contains(item.Id))
                             {
-                                CIDToUserDataDic[user.CID].HistoryBidIdList = new List<int>();
+                                if (CIDToUserDataDic[user.CID].HistoryBidIdList == null)
+                                {
+                                    CIDToUserDataDic[user.CID].HistoryBidIdList = new List<int>();
+                                }
+
+                                CIDToUserDataDic[user.CID].HistoryBidIdList.Add(item.Id);
+
+                                CIDToUserDataDic[user.CID].BidIdList.Remove(item.Id);
+
+                                HistoryItemIdToItemDic.Add(item.Id, item);
+
+                                ItemIdToItemDic.Remove(item.Id);
                             }
-
-                            CIDToUserDataDic[user.CID].HistoryBidIdList.Add(item.Id);
-
-                            CIDToUserDataDic[user.CID].BidIdList.Remove(item.Id);
-
-                            HistoryItemIdToItemDic.Add(item.Id, item);
-                            
-                            ItemIdToItemDic.Remove(item.Id);
                         }
                     }
                     else
