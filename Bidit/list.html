@@ -45,9 +45,9 @@
         </div>
     </div>
         
-    <div class="container" dir="rtl" "style="direction: rtl">
+    <div class="container" dir="rtl" style="direction: rtl">
        
-        <table class="table table-striped" dir="rtl" "style="direction: rtl">
+        <table class="table table-striped" dir="rtl" style="direction: rtl">
             <thead>
                 <tr>
                     <th style="text-align: right">קטגוריה:</th>
@@ -57,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in items" id="item_{{item.Id}}">
+                <tr ng-repeat="item in currentDisplayedItems" id="item_{{item.Id}}">
                     <td>{{item.Category}}</td>
                     <td>{{item.Product}}</td>
                     <td>{{item.FirstPriceDisplay}} ₪</td>
@@ -84,6 +84,28 @@
                 </tr>
             </tbody>
         </table>
+        
+        <!-- Paging -->
+        <div class="row">
+            <div class="col-sm-8"> <!-- מציג מכרזים {{lastDisplayedItemIndex}} - {{firstDisplayedItemIndex}} מתוך {{numOfItems}} מכרזים  -->
+                <div class="dataTables_info" role="status" aria-live="polite">{{dataTableInfoText}}</div>
+            </div>
+            <div class="col-sm-4">
+              <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+                    <ul class="pagination">
+                        <li class={{previousPageClass}} tabindex="0" id="Li1">
+                            <a href="" ng-click="showItemsInPreviousPage()">הקודם</a>
+                        </li>
+                        <li data-ng-repeat="page in pages" id="page_{{page}}" tabindex="0">
+                            <a href="" ng-click="showItemsInPage(page)">{{ page }}</a>
+                        </li>
+                        <li class={{nextPageClass}} tabindex="0" id="Li2">
+                            <a href="" ng-click="showItemsInNextPage()">הבא</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
     </div>
     

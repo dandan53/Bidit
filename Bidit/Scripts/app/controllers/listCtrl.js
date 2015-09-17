@@ -21,6 +21,11 @@
         },
             function (data) {
                 $scope.items = data;
+
+                $scope.setPaging();
+
+                $scope.showItemsInPage($scope.currentPage);
+                
                 //$scope.more = data.length > 5;
                 //$scope.items = $scope.items.concat(data);
             });
@@ -105,4 +110,73 @@
         $location.path('/editbid/' + item.Id + "/" + $scope.isBidUser);
     };
     
+    // Paging
+
+    $scope.pageSize = 10;
+    $scope.pages = [1];
+    $scope.numOfItems = 0;
+    $scope.numOfPages = 1;
+
+    $scope.setPaging = function () {
+        if ($scope.items != null && $scope.items.length) {
+            $scope.numOfItems = $scope.items.length;
+            var divide = Math.floor($scope.numOfItems / $scope.pageSize);
+            var modulo = $scope.numOfItems % $scope.pageSize;
+            $scope.numOfPages = (modulo == 0 ? divide : divide + 1);
+            $scope.pages = [];
+            for (var i = 0; i < $scope.numOfPages; i++) {
+                $scope.pages.push(i+1);
+            }
+        }
+    };
+
+    $scope.currentDisplayedItems = {};
+    $scope.currentPage = 1;
+
+    $scope.firstDisplayedItemIndex = 0;
+    $scope.lastDisplayedItemIndex = 0;
+
+    $scope.showItemsInPage = function (pageIndex) {
+
+        var prevElementName = '#page_' + $scope.currentPage;
+        var prevElement = angular.element(prevElementName);
+        prevElement[0].className = "";
+
+        var currentElementName = '#page_' + pageIndex;
+        var currentElement = angular.element(currentElementName);
+        currentElement[0].className = "active";
+
+        $scope.currentPage = pageIndex;
+        var begin = (($scope.currentPage - 1) * $scope.pageSize)
+        , end = begin + $scope.pageSize;
+        $scope.currentDisplayedItems = $scope.items.slice(begin, end);
+        
+        $scope.setPagingButtons();
+
+        $scope.firstDisplayedItemIndex = begin + 1;
+        $scope.lastDisplayedItemIndex = (end > $scope.numOfItems ? $scope.numOfItems : end);
+
+        $scope.dataTableInfoText = ($scope.numOfItems > 0 ? "מציג מכרזים " + $scope.firstDisplayedItemIndex + "-" + $scope.lastDisplayedItemIndex + " מתוך " + $scope.numOfItems + " מכרזים " :
+            "אין מכרזים להציג");
+    };
+
+    $scope.showItemsInPreviousPage = function () {
+        if ($scope.currentPage > 1) {
+            $scope.showItemsInPage($scope.currentPage - 1);
+        }
+    };
+
+    $scope.showItemsInNextPage = function () {
+        if ($scope.currentPage < $scope.numOfPages) {
+            $scope.showItemsInPage($scope.currentPage + 1);
+        }
+    };
+
+    $scope.setPagingButtons = function () {
+        $scope.previousPageClass = ($scope.currentPage != 1 ? "paginate_button previous" : "paginate_button previous disabled");
+        $scope.nextPageClass = ($scope.currentPage != $scope.numOfPages && $scope.numOfPages != 1 ? "paginate_button next" : "paginate_button next disabled");
+    };
+
+    $scope.setPagingButtons();
+
 });

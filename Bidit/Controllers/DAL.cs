@@ -365,474 +365,175 @@ namespace Bidit.Controllers
 
             ItemIdToItemDic.Add(item7.Id, item7);
 
-            //Item item8 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 202
-            //};
+            Item item8 = new Item()
+            {
+                Amount = 1,
+                Category = "מוצרי חשמל",
+                CategoryId = 2,
+                DueDate = DateTime.Now.AddMinutes(1),
+                FirstPrice = 2000,
+                Id = 8,
+                Product = "מזגן עילי",
+                ProductId = 20101,
+                SubCategory = "מזגן",
+                SubCategoryId = 201,
+                FirstPriceDisplay = "2000"
+            };
 
-            //Items.Add(item8);
+            ItemIdToItemDic.Add(item8.Id, item8);
 
-            //Item item9 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 111,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 202
-            //};
+            Item item9 = new Item()
+            {
+                Amount = 5,
+                Category = "ריהוט",
+                CategoryId = 3,
+                DueDate = DateTime.Now.AddDays(1),
+                FirstPrice = 50,
+                Id = 9,
+                Product =  "שרפרף",
+                ProductId = 30103,
+                SubCategory = "כסאות",
+                SubCategoryId = 301,
+                FirstPriceDisplay = "50"
+            };
 
-            //Items.Add(item9);
+            ItemIdToItemDic.Add(item9.Id, item9);
 
-            //Item item10 = new Item()
-            //{
-            //    Amount = 12,
-            //    Category = "ציוד משרדי",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(2),
-            //    FirstPrice = 10,
-            //    Id = 2,
-            //    Product = "דפים למדפסת",
-            //    ProductId = 2,
-            //    SubCategory = "דפים",
-            //    SubCategoryId = 1
-            //};
+            Item item10 = new Item()
+            {
+                Amount = 1,
+                Category = "מוצרי חשמל",
+                CategoryId = 2,
+                DueDate = DateTime.Now.AddDays(1),
+                FirstPrice = 1500,
+                Id = 10,
+                Product = "LED",
+                ProductId = 20202,
+                SubCategory = "טלויזיה",
+                SubCategoryId = 202,
+                FirstPriceDisplay = "1500"
+            };
 
-            //Items.Add(item10);
+            ItemIdToItemDic.Add(item10.Id, item10);
 
-            //Item item11 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 202
-            //};
+            Item item11 = new Item()
+            {
+                Amount = 2,
+                Category = "כלי עבודה",
+                CategoryId = 1,
+                DueDate = DateTime.Now.AddDays(2),
+                FirstPrice = 15,
+                Id = 11,
+                Product = "מעדר",
+                ProductId = 10102,
+                SubCategory = "חומרי עבודה",
+                SubCategoryId = 101,
+                FirstPriceDisplay = "15"
+            };
 
-            //Items.Add(item11);
+            ItemIdToItemDic.Add(item11.Id, item11);
 
-            //Item item12 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 202
-            //};
+            Item item12 = new Item()
+            {
+                Amount = 1,
+                Category = "מוצרי חשמל",
+                CategoryId = 2,
+                DueDate = DateTime.Now.AddDays(10),
+                FirstPrice = 400,
+                Id = 12,
+                Product = "מאוורר תקרה",
+                ProductId = 20001,
+                SubCategory = "מאוורר",
+                SubCategoryId = 200,
+                FirstPriceDisplay = "400"
+            };
 
-            //Items.Add(item12);
+            ItemIdToItemDic.Add(item12.Id, item12);
 
-            //Item item13 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 202
-            //};
+            Item item13 = new Item()
+            {
+                Amount = 10,
+                Category = "ריהוט",
+                CategoryId = 3,
+                DueDate = DateTime.Now.AddDays(5),
+                FirstPrice = 100,
+                Id = 13,
+                Product = "ארונית",
+                ProductId = 30002,
+                SubCategory = "ארונות",
+                SubCategoryId = 300,
+                FirstPriceDisplay = "100"
+            };
 
-            //Items.Add(item13);
+            ItemIdToItemDic.Add(item13.Id, item13);
 
-            //Item item14 = new Item()
-            //{
-            //    Amount = 12,
-            //    Category = "ציוד משרדי",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(2),
-            //    FirstPrice = 10,
-            //    Id = 2,
-            //    Product = "דפים למדפסת",
-            //    ProductId = 2,
-            //    SubCategory = "דפים",
-            //    SubCategoryId = 1
-            //};
+            Item item14 = new Item()
+            {
+                Amount = 1,
+                Category = "מוצרי חשמל",
+                CategoryId = 2,
+                DueDate = DateTime.Now.AddDays(10),
+                FirstPrice = 3500,
+                Id = 14,
+                Product = "LED",
+                ProductId = 20202,
+                SubCategory = "טלויזיות",
+                SubCategoryId = 202,
+                FirstPriceDisplay = "3500"
+            };
 
-            //Items.Add(item14);
+            ItemIdToItemDic.Add(item14.Id, item14);
 
-            //Item item15 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 202
-            //};
+            Item item15 = new Item()
+            {
+                Amount = 6,
+                Category = "ריהוט",
+                CategoryId = 3,
+                DueDate = DateTime.Now.AddDays(-1),
+                FirstPrice = 50,
+                Id = 15,
+                Product = "כסא פלסטיק",
+                ProductId = 30101,
+                SubCategory = "כסאות",
+                SubCategoryId = 301,
+                FirstPriceDisplay = "50"
+            };
 
-            //Items.Add(item15);
+            ItemIdToItemDic.Add(item15.Id, item15);
 
-            //Item item16 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
+            Item item16 = new Item()
+            {
+                Amount = 1,
+                Category = "מוצרי חשמל",
+                CategoryId = 2,
+                DueDate = DateTime.Now.AddMinutes(15),
+                FirstPrice = 4000,
+                Id = 16,
+                Product = "מזגן עילי",
+                ProductId = 20101,
+                SubCategory = "מזגן",
+                SubCategoryId = 201,
+                FirstPriceDisplay = "4000"
+            };
 
-            //Items.Add(item16);
+            ItemIdToItemDic.Add(item16.Id, item16);
 
-            //Item item17 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
+            Item item17 = new Item()
+            {
+                Amount = 15,
+                Category = "ריהוט",
+                CategoryId = 3,
+                DueDate = DateTime.Now.AddDays(7),
+                FirstPrice = 45,
+                Id = 17,
+                Product = "שרפרף",
+                ProductId = 30103,
+                SubCategory = "כסאות",
+                SubCategoryId = 301,
+                FirstPriceDisplay = "45"
+            };
 
-            //Items.Add(item17);
-
-            //Item item18 = new Item()
-            //{
-            //    Amount = 12,
-            //    Category = "ציוד משרדי",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(2),
-            //    FirstPrice = 10,
-            //    Id = 2,
-            //    Product = "דפים למדפסת",
-            //    ProductId = 2,
-            //    SubCategory = "דפים",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item18);
-
-            //Item item19 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item19);
-
-            //Item item20 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item20);
-
-            //Item item21 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item21);
-
-            //Item item22 = new Item()
-            //{
-            //    Amount = 12,
-            //    Category = "ציוד משרדי",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(2),
-            //    FirstPrice = 10,
-            //    Id = 2,
-            //    Product = "דפים למדפסת",
-            //    ProductId = 2,
-            //    SubCategory = "דפים",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item22);
-
-            //Item item23 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item23);
-
-            //Item item24 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item24);
-
-            //Item item25 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item25);
-
-            //Item item26 = new Item()
-            //{
-            //    Amount = 12,
-            //    Category = "ציוד משרדי",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(2),
-            //    FirstPrice = 10,
-            //    Id = 2,
-            //    Product = "דפים למדפסת",
-            //    ProductId = 2,
-            //    SubCategory = "דפים",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item26);
-
-            //Item item27 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item27);
-
-            //Item item28 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item28);
-
-            //Item item29 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item29);
-
-            //Item item30 = new Item()
-            //{
-            //    Amount = 12,
-            //    Category = "ציוד משרדי",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(2),
-            //    FirstPrice = 10,
-            //    Id = 2,
-            //    Product = "דפים למדפסת",
-            //    ProductId = 2,
-            //    SubCategory = "דפים",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item30);
-
-            //Item item31 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item31);
-
-            //Item item32 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item32);
-
-            //Item item33 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //Items.Add(item33);
-
-            //Items = new List<Item>();
-            //Item item70 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "category 1",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "message 1",
-            //    ProductId = 1,
-            //    SubCategory = "sub cat 1",
-            //    SubCategoryId = 201,
-            //    Text = "like a new product"
-            //};
-
-            //Items.Add(item70);
-
-            //Item item71 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "category 1",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "message 1",
-            //    ProductId = 1,
-            //    SubCategory = "sub cat 1",
-            //    SubCategoryId = 201,
-            //    Text = "Only in black"
-            //};
-
-            //Items.Add(item71);
-
-            //Item item72 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "category 1",
-            //    CategoryId = 2,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "message 1",
-            //    ProductId = 1,
-            //    SubCategory = "sub cat 1",
-            //    SubCategoryId = 201,
-            //    Text = "Great performance"
-            //};
-
-            //Items.Add(item72);
-
+            ItemIdToItemDic.Add(item17.Id, item17);
         }
 
         /// <summary>
