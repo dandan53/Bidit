@@ -11,6 +11,7 @@ namespace Bidit.Models
         public List<int> BidIdList { get; set; }
         public List<int> AskIdList { get; set; }
         public List<int> HistoryBidIdList { get; set; }
+        public List<int> HistoryAskIdList { get; set; }
         public List<int> SubscribedProductIdList { get; set; }
     }
 }

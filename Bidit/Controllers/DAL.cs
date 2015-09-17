@@ -125,6 +125,8 @@ namespace Bidit.Controllers
                             var userData = CIDToUserDataDic[item.BidCID];
                             if (userData != null && userData.BidIdList != null && userData.BidIdList.Contains(item.Id))
                             {
+                                // Bid user
+                                
                                 if (CIDToUserDataDic[user.CID].HistoryBidIdList == null)
                                 {
                                     CIDToUserDataDic[user.CID].HistoryBidIdList = new List<int>();
@@ -133,6 +135,22 @@ namespace Bidit.Controllers
                                 CIDToUserDataDic[user.CID].HistoryBidIdList.Add(item.Id);
 
                                 CIDToUserDataDic[user.CID].BidIdList.Remove(item.Id);
+
+                                // Ask users
+
+                                var firstAskUser = GetUserByCID(updatedItem.FirstAskCID);
+                                if (firstAskUser != null && CIDToUserDataDic[firstAskUser.CID] != null &&
+                                    CIDToUserDataDic[firstAskUser.CID].AskIdList != null && CIDToUserDataDic[firstAskUser.CID].AskIdList.Contains(updatedItem.Id))
+                                {
+                                    if (CIDToUserDataDic[firstAskUser.CID].HistoryAskIdList == null)
+                                    {
+                                        CIDToUserDataDic[firstAskUser.CID].HistoryAskIdList = new List<int>();
+                                    }
+
+                                    CIDToUserDataDic[firstAskUser.CID].HistoryAskIdList.Add(updatedItem.Id);
+
+                                    CIDToUserDataDic[firstAskUser.CID].AskIdList.Remove(updatedItem.Id);
+                                }
 
                                 HistoryItemIdToItemDic.Add(item.Id, item);
 
