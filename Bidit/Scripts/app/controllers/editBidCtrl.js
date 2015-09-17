@@ -53,6 +53,40 @@
         }
     };
 
+    $scope.removeBid = function () {
+
+        if (userDataService.isLoggedIn())
+        {
+            var result;
+            if (confirm("האם אתה בטוח שאתה רוצה להסיר את המכרז") == true) {
+                result = true;
+            } else {
+                result = false;
+            }
+
+            if (result == true) {
+                var updatedBid = {
+                    Id: $scope.bidId,
+                    NewAskCID: -1,
+                    BidCID: $scope.user.CID
+                };
+
+                bidService.updateBid(updatedBid)
+                    .then(
+                        loadRemoteData,
+                        function(errorMessage) {
+
+                            console.warn(errorMessage);
+
+                        }
+                    );
+            }
+        }
+        else
+        {
+            alert('יש להיכנס למערכת');
+        }
+    };
 
     // I load the remote data from the server.
 

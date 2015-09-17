@@ -14,6 +14,9 @@ namespace Bidit.Controllers
         private new Dictionary<int, List<int>> ProductIdToSubscriberCIDList = new Dictionary<int, List<int>>();
 
         private Dictionary<int, Item> ItemIdToItemDic = new Dictionary<int, Item>();
+
+        private Dictionary<int, Item> HistoryItemIdToItemDic = new Dictionary<int, Item>();
+
         
         private static DAL instance = null;
 
@@ -39,8 +42,6 @@ namespace Bidit.Controllers
         /// Items
         /// </summary>
         
-        
-
         public Dictionary<int, Item> GetItems()
         {
             return ItemIdToItemDic;
@@ -48,13 +49,23 @@ namespace Bidit.Controllers
 
         public void AddItem(Item item)
         {
-             User user = GetUserByCID(item.BidCID);
+            User user = GetUserByCID(item.BidCID);
             if (user != null)
             {
                 item.Id = CreateItemId();
                 item.BidCID = user.CID;
                 item.FirstPriceDisplay = "--";
                 ItemIdToItemDic.Add(item.Id, item);
+
+                if (CIDToUserDataDic.ContainsKey(user.CID))
+                {
+                    if (CIDToUserDataDic[user.CID].BidIdList == null)
+                    {
+                        CIDToUserDataDic[user.CID].BidIdList = new List<int>();
+                    }
+
+                    CIDToUserDataDic[user.CID].BidIdList.Add(item.Id);
+                }
 
                 NotifiySubscribers(item.ProductId, item);
             }
@@ -103,42 +114,71 @@ namespace Bidit.Controllers
             {
                 if (item.NewAskCID != 0)
                 {
-                    user = GetUserByCID(item.NewAskCID);
-                    updatedItem = GetItem(item.Id);
-                    if (updatedItem != null && user != null)
+                    if (item.NewAskCID == -1)
                     {
-                        if (updatedItem.FirstPrice == 0 || item.NewPrice < updatedItem.FirstPrice)
-                        {
-                            updatedItem.FirstPrice = item.NewPrice;
-                            updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                            updatedItem.FirstAskCID = user.CID;
-                        }
-                        else if (updatedItem.SecondPrice == 0 || item.NewPrice < updatedItem.SecondPrice)
-                        {
-                            updatedItem.SecondPrice = item.NewPrice;
-                            //updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                            updatedItem.SecondAskCID = user.CID;
-                        }
-                        else if (updatedItem.ThirdPrice == 0 || item.NewPrice < updatedItem.ThirdPrice)
-                        {
-                            updatedItem.ThirdPrice = item.NewPrice;
-                           // updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
-                            updatedItem.ThirdAskCID = user.CID;
-                        }
+                        // remove item
 
-                        if (CIDToUserDataDic.ContainsKey(user.CID))
+                        user = GetUserByCID(item.BidCID);
+                        updatedItem = GetItem(item.Id);
+                        if (updatedItem != null && user != null)
                         {
-                            if (CIDToUserDataDic[user.CID].AskIdList == null)
+                            if (CIDToUserDataDic[user.CID].HistoryBidIdList == null)
                             {
-                                CIDToUserDataDic[user.CID].AskIdList = new List<int>();
+                                CIDToUserDataDic[user.CID].HistoryBidIdList = new List<int>();
                             }
 
-                            CIDToUserDataDic[user.CID].AskIdList.Add(updatedItem.Id);
+                            CIDToUserDataDic[user.CID].HistoryBidIdList.Add(item.Id);
+
+                            CIDToUserDataDic[user.CID].BidIdList.Remove(item.Id);
+
+                            HistoryItemIdToItemDic.Add(item.Id, item);
+                            
+                            ItemIdToItemDic.Remove(item.Id);
+                        }
+                    }
+                    else
+                    {
+                        // update price
+
+                        user = GetUserByCID(item.NewAskCID);
+                        updatedItem = GetItem(item.Id);
+                        if (updatedItem != null && user != null)
+                        {
+                            if (updatedItem.FirstPrice == 0 || item.NewPrice < updatedItem.FirstPrice)
+                            {
+                                updatedItem.FirstPrice = item.NewPrice;
+                                updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                                updatedItem.FirstAskCID = user.CID;
+                            }
+                            else if (updatedItem.SecondPrice == 0 || item.NewPrice < updatedItem.SecondPrice)
+                            {
+                                updatedItem.SecondPrice = item.NewPrice;
+                                //updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                                updatedItem.SecondAskCID = user.CID;
+                            }
+                            else if (updatedItem.ThirdPrice == 0 || item.NewPrice < updatedItem.ThirdPrice)
+                            {
+                                updatedItem.ThirdPrice = item.NewPrice;
+                                // updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+                                updatedItem.ThirdAskCID = user.CID;
+                            }
+
+                            if (CIDToUserDataDic.ContainsKey(user.CID))
+                            {
+                                if (CIDToUserDataDic[user.CID].AskIdList == null)
+                                {
+                                    CIDToUserDataDic[user.CID].AskIdList = new List<int>();
+                                }
+
+                                CIDToUserDataDic[user.CID].AskIdList.Add(updatedItem.Id);
+                            }
                         }
                     }
                 }
                 else
                 {
+                    // update item
+                    
                     user = GetUserByCID(item.BidCID);
                     updatedItem = GetItem(item.Id);
                     if (updatedItem != null && user != null)
@@ -177,6 +217,14 @@ namespace Bidit.Controllers
             int retVal = 0;
 
             foreach (var item in ItemIdToItemDic)
+            {
+                if (item.Key > retVal)
+                {
+                    retVal = item.Key;
+                }
+            }
+
+            foreach (var item in HistoryItemIdToItemDic)
             {
                 if (item.Key > retVal)
                 {
