@@ -57,22 +57,6 @@ namespace Bidit.Controllers
         {
             Item item = DAL.Instance.GetItem(id);
             return item;
-
-            //Item item1 = new Item()
-            //{
-            //    Amount = 10,
-            //    Category = "מוצרי חשמל",
-            //    CategoryId = 1,
-            //    DueDate = DateTime.Now.AddDays(1),
-            //    FirstPrice = 100,
-            //    Id = 1,
-            //    Product = "טלויזיה",
-            //    ProductId = 1,
-            //    SubCategory = "טלויזיות",
-            //    SubCategoryId = 1
-            //};
-
-            //return item1;
         }
 
         // DELETE api/Item/5
@@ -103,10 +87,6 @@ namespace Bidit.Controllers
         public HttpResponseMessage PutTodo(int id, Item item)
         {
             return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        private ItemController()
-        {
         }
 
     }

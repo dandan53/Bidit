@@ -76,8 +76,12 @@
                             הגש הצעה
                         </button>
                         
-                        <button type="button" class="btn btn-primary" ng-click="editBid(item)" ng-show="!isPublicMode">
+                        <button type="button" class="btn btn-primary" ng-click="editBid(item)" ng-show="!isPublicMode && !{{item.IsBidEnded}}">
                             ערוך הצעה
+                        </button>
+                        
+                        <button type="button" class="btn btn-success" ng-click="bidResults(item)" ng-show="!isPublicMode && {{item.IsBidEnded}}">
+                            תוצאות המכרז
                         </button>
 
                     </td>

@@ -1,4 +1,4 @@
-﻿app.controller('EditbidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+﻿app.controller('EditbidCtrl', function ($scope, $location, $routeParams, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
     $scope.bidId = $routeParams.id;
@@ -91,7 +91,7 @@
     // I load the remote data from the server.
 
     function loadRemoteData() {
-        $location.path('/privatearea/' + $scope.isBidUser);
+        $scope.closeEditBidForm();
     };
 
 

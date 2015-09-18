@@ -1,0 +1,60 @@
+﻿<div class="container" ng-controller="BidResultsCtrl" style="padding-top: 30px">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">תוצאות המכרז</h3>
+                </div>
+                <div class="panel-body">
+                                  
+                   <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.Product}}</div>
+                        <div class="col-md-3">מוצר:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.Category}}</div>
+                        <div class="col-md-3">קטגוריה:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.SubCategory}}</div>
+                        <div class="col-md-3">תת קטגוריה:</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.ProductId}}</div>
+                        <div class="col-md-3">מספר מוצר:</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.Id}}</div>
+                        <div class="col-md-3">מספר מכרז:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.FirstPrice}} ₪</div>
+                        <div class="col-md-3">המחיר הטוב ביותר:</div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.SubCategory}}</div>
+                        <div class="col-md-3">תת קטגוריה:</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-6">{{item.ProductId}}</div>
+                        <div class="col-md-3">מספר מוצר:</div>
+                    </div>
+                    
+                </div>
+                
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-danger" ng-show={{isBidUser}} ng-click="removeBid()">הסר מכרז</button>
+                    <button type="button" class="btn btn-default" ng-click="closeBidResultsForm()">סגור</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

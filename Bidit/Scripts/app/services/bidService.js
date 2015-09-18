@@ -4,7 +4,8 @@
     return ({
         addBid: addBid,
         getBid: getBid,
-        updateBid: updateBid
+        updateBid: updateBid,
+        getBidResults: getBidResults
 
         //removeFriend: removeFriend
     });
@@ -63,7 +64,9 @@
 
         return (request.then(handleSuccess, handleError));
 
-    }               // I get all of the friends in the remote collection.
+    }
+
+    // I get all of the friends in the remote collection.
     function getBid(id) {
 
         var request = $http({
@@ -78,6 +81,19 @@
 
     }
 
+
+    function getBidResults(id) {
+
+        var request = $http({
+            method: "get",
+            url: "/api/bidresults/",
+            params: {
+                id: id
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+    }
 
     //// I get all of the friends in the remote collection.
     //function getFriends() {

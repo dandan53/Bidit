@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BidDueDateManager.cs" />
+    <Compile Include="Controllers\BidResultsController.cs" />
     <Compile Include="Controllers\DAL.cs" />
     <Compile Include="Controllers\EmailSender.cs" />
     <Compile Include="Controllers\EmailTemplate.cs" />
@@ -219,9 +220,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="bidresults.html" />
+    <Content Include="bidresults_form.html" />
     <Content Include="editbid.html" />
     <Content Include="editbid_form.html" />
     <Content Include="pix\bid.jpg" />
+    <Content Include="Scripts\app\controllers\bidResultsCtrl.js" />
     <Content Include="Scripts\app\controllers\editBidCtrl.js" />
     <Content Include="signup_form.html" />
     <Content Include="settings_form.html" />

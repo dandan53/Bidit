@@ -110,6 +110,10 @@
         $location.path('/editbid/' + item.Id + "/" + $scope.isBidUser);
     };
     
+    $scope.bidResults = function (item) {
+        $location.path('/bidresults/' + item.Id + "/" + $scope.isBidUser);
+    };
+
     // Paging
 
     $scope.pageSize = 10;
