@@ -4,6 +4,8 @@
     $scope.bidId = $routeParams.id;
     $scope.isBidUser = $routeParams.isBidUser;
 
+    $scope.firstAsk = null;
+
     $scope.getBidResults = function () {
 
         bidService.getBidResults($scope.bidId)
@@ -16,7 +18,10 @@
     };
 
     function loadData(data) {
-        $scope.item = data.Bid;
+        if (data != null) {
+            $scope.item = data.Bid;
+            $scope.firstAsk = data.FirstAsk;
+        }
     };
 
     $scope.getBidResults();

@@ -19,6 +19,14 @@ namespace Bidit.Controllers
             if (item != null)
             {
                 results = new BidResultsResult() { Bid = item };
+
+                var firstAskUser = DAL.Instance.GetUserByCID(item.FirstAskCID);
+                if (firstAskUser != null)
+                {
+                    results.FirstAsk = new User() {Username = firstAskUser.Username, 
+                                                    Email = firstAskUser.Email, 
+                                                    Phone = firstAskUser.Phone};
+                }
             }
 
             return results;
