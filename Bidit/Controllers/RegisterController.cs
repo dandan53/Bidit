@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Bidit.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace Bidit.Controllers
 {
@@ -15,7 +16,9 @@ namespace Bidit.Controllers
         {
             var retVal = new RegisterResult();
 
-            if (request != null)
+            if (request != null && request.Username.IsNullOrWhiteSpace() == false &&
+                request.Password.IsNullOrWhiteSpace() == false &&
+                request.Email.IsNullOrWhiteSpace() == false)
             {
                 var user = DAL.Instance.AddUser(request);
                 if (user != null && user.CID > 0)

@@ -1,4 +1,4 @@
-﻿app.controller('SignupCtrl', function ($scope, $location, $routeParams, SignupService, userDataService) {
+﻿app.controller('SignupCtrl', function ($scope, $location, $routeParams, $timeout,SignupService, userDataService) {
 
     $scope.register = function () {
 
@@ -25,8 +25,10 @@
 
     // I load the remote data from the server.
 
-    function loadRemoteData(data) {
-        if (data != null && data.User != null) {
+    function loadRemoteData(data)
+    {
+        if (data != null && data.User != null)
+        {
             $scope.username = data.User.Username;
 
             $scope.user.username = data.User.Username;
@@ -34,13 +36,26 @@
 
             userDataService.save();
 
-            alert('ההרשמה עברה בהצלחה. ברוכים הבאים');
-            
-            $location.url('/');
-        } else {
-            alert('ההרשמה נכשלה. נא נסו שנית');
+            $scope.isAlertSuccess = true;
+            $timeout(function () { $scope.alertTimeout(); }, 1500);
+        }
+        else
+        {
+            $scope.isAlertDanger = true;
+            $timeout(function () { $scope.alertDangrTimeout(); }, 2500);
         }
     };
+
+    $scope.alertTimeout = function () {
+        $location.url('/');
+    };
+    
+    $scope.alertDangrTimeout = function () {
+        $scope.isAlertDanger = false;
+    };
+
+    $scope.isAlertSuccess = false;
+    $scope.isAlertDanger = false;
 
     $scope.newUser = {};
     $scope.newUser.username = "";

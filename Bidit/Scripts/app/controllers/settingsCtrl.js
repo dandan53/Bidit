@@ -1,4 +1,4 @@
-﻿app.controller('SettingsCtrl', function ($scope, $location, $routeParams, Login, SettingsService, userDataService) {
+﻿app.controller('SettingsCtrl', function ($scope, $location, $routeParams, $timeout, Login, SettingsService, userDataService) {
 
     $scope.user = userDataService.getUserData();
 
@@ -15,13 +15,15 @@
             else {
                 var productId = $scope.selectedProduct.id;
                 $scope.userSettings.itemToUpdatesDic[productId] = productId;
+                
+                $scope.alertSuccessText = "המוצר התווסף לרשימת העדכונים";
+                $scope.isAlertSuccess = true;
+                $timeout(function () { $scope.alertTimeout(false); }, 1500);
             }
         } else {
             alert('יש להיכנס למערכת');
         }
-
     };
-   
     
     $scope.closeSettingsForm = function () {
         $location.url('/');
@@ -49,13 +51,26 @@
         }
     };
 
-    // I load the remote data from the server.
-
-    function loadRemoteData() {
+    function loadRemoteData()
+    {
         $scope.user.isEmailUpdates = $scope.userSettings.isEmailUpdates;
-        $location.url('/');
+
+        $scope.alertSuccessText = "ההגדרות התעדכנו בהצלחה.";
+        $scope.isAlertSuccess = true;
+        $timeout(function () { $scope.alertTimeout(true); }, 1500);
     };
 
+    $scope.alertTimeout = function (isCloseForm) {
+        if (isCloseForm) {
+            $location.url('/');
+        } else {
+            $scope.isAlertSuccess = false;
+        }
+    };
+
+    $scope.isAlertSuccess = false;
+    $scope.alertSuccessText = "";
+    
     $scope.options = getCategories();
     $scope.selectedOption = $scope.options[0];
 

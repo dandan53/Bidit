@@ -14,21 +14,21 @@
                 
                     <br/>
 
-                   <div class="row">
+                    <div class="row">
                         <input class="col-md-5 col-md-offset-4" type="password" data-ng-model="newUser.password"/>
                         <div class="col-md-3">סיסמה:</div>
                     </div>
 
-                     <br/>
+                    <br/>
 
-                   <div class="row">
+                    <div class="row">
                         <input class="col-md-5 col-md-offset-4" type="email" data-ng-model="newUser.email"/>
                         <div class="col-md-3">מייל:</div>
                     </div>
                     
-                       <br/>
+                    <br/>
 
-                   <div class="row">
+                    <div class="row">
                         <input class="col-md-5 col-md-offset-4" type="tel" data-ng-model="newUser.phone"/>
                         <div class="col-md-3">טלפון:</div>
                     </div>
@@ -37,11 +37,20 @@
                 
                 <div class="panel-footer">
                     <a href="" ng-click="register()" class="btn btn-lg btn-success btn-block">הירשם</a>
-<!--                    <button type="button" class="btn btn-primary" ng-click="register()">הירשם</button>
-                    <button type="button" class="btn btn-default" ng-click="closeNewBidForm()">סגור</button> -->
+                    <!--                    <button type="button" class="btn btn-primary" ng-click="register()">הירשם</button>
+                        <button type="button" class="btn btn-default" ng-click="closeNewBidForm()">סגור</button> -->
                 </div>
 
             </div>
         </div>
     </div>
+    
+    <div class="alert alert-success" id="successAlert" ng-show="isAlertSuccess === true" style="text-align: center">
+        הרישום עבר בהצלחה! ברוכים הבאים לבידיט!
+    </div>
+    
+    <div class="alert alert-danger" ng-show="isAlertDanger === true" style="text-align: center">
+        ההרשמה נכשלה. נא נסו שנית.
+    </div>
+
 </div>

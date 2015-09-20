@@ -7,7 +7,7 @@
                 </div>
                 <div class="panel-body">
                                   
-                   <div class="row">
+                    <div class="row">
                         <div class="col-md-3 col-md-offset-6">{{item.Product}}</div>
                         <div class="col-md-3">מוצר:</div>
                     </div>
@@ -52,4 +52,9 @@
             </div>
         </div>
     </div>
+    
+    <div class="alert alert-success" ng-show="isAlertSuccess === true" style="text-align: center">
+       {{alertSuccessText}}
+    </div>
+
 </div>

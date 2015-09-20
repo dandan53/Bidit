@@ -1,4 +1,4 @@
-﻿app.controller('BidResultsCtrl', function ($scope, $location, $routeParams, bidService, userDataService) {
+﻿app.controller('BidResultsCtrl', function ($scope, $location, $routeParams, $timeout, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
     $scope.bidId = $routeParams.id;
@@ -59,11 +59,16 @@
         }
     };
 
-    // I load the remote data from the server.
-
     function loadRemoteData() {
+        $scope.isAlertSuccess = true;
+        $timeout(function () { $scope.alertTimeout(); }, 1500);
+    };
+
+    $scope.alertTimeout = function () {
         $scope.closeBidResultsForm();
     };
+
+    $scope.isAlertSuccess = false;
     
     $scope.closeBidResultsForm = function () {
         $location.path('/privatearea/' + $scope.isBidUser);

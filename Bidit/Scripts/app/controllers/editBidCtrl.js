@@ -1,4 +1,4 @@
-﻿app.controller('EditbidCtrl', function ($scope, $location, $routeParams, bidService, userDataService) {
+﻿app.controller('EditbidCtrl', function ($scope, $location, $routeParams, $timeout, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
     $scope.bidId = $routeParams.id;
@@ -35,9 +35,11 @@
                     BidCID: $scope.user.CID
                 };
 
+                $scope.alertSuccessText = "המכרז התעדכן בהצלחה.";
+
                 bidService.updateBid(updatedBid)
                     .then(
-                        loadRemoteData,
+                        loadRemoteData(),
                         function(errorMessage) {
 
                             console.warn(errorMessage);
@@ -71,6 +73,8 @@
                     BidCID: $scope.user.CID
                 };
 
+                $scope.alertSuccessText = "המכרז הוסר בהצלחה.";
+
                 bidService.updateBid(updatedBid)
                     .then(
                         loadRemoteData,
@@ -89,11 +93,19 @@
     };
 
     // I load the remote data from the server.
-
     function loadRemoteData() {
+        $scope.isAlertSuccess = true;
+
+        $timeout(function () { $scope.alertTimeout(); }, 1500);
+    };
+
+    $scope.alertTimeout = function () {
+        //   $scope.isAlertSuccess = false;
         $scope.closeEditBidForm();
     };
 
+    $scope.isAlertSuccess = false;
+    $scope.alertSuccessText = "";
 
     $scope.closeEditBidForm = function () {
         $location.path('/privatearea/' + $scope.isBidUser);

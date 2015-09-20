@@ -1,4 +1,4 @@
-﻿app.controller('PricebidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+﻿app.controller('PricebidCtrl', function ($scope, $location, $routeParams, $timeout, Login, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
     $scope.bid_id = $routeParams.id;
@@ -50,14 +50,18 @@
             alert('יש להיכנס למערכת');
         }
     };
-
-
-    // I load the remote data from the server.
-
-    function loadRemoteData() {
-        $location.url('/');
+    
+    function loadRemoteData()
+    {
+        $scope.isAlertSuccess = true;
+        $timeout(function () { $scope.alertTimeout(); }, 1500);
     };
 
+    $scope.alertTimeout = function () {
+        $scope.closePriceBidForm();
+    };
+
+    $scope.isAlertSuccess = false;
 
     $scope.closePriceBidForm = function () {
         $location.url('/');
