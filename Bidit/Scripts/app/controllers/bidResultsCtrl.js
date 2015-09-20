@@ -6,6 +6,8 @@
 
     $scope.firstAsk = null;
 
+    $scope.isAskArea = false;
+
     $scope.getBidResults = function () {
 
         bidService.getBidResults($scope.bidId)
@@ -21,6 +23,9 @@
         if (data != null) {
             $scope.item = data.Bid;
             $scope.firstAsk = data.FirstAsk;
+            if ($scope.firstAsk != null) {
+                $scope.isAskArea = true;
+            }
         }
     };
 

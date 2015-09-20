@@ -45,30 +45,38 @@
                     <hr/>
                     
                     <b>
-                        <div class="row">
-                            <div class="col-md-3 col-md-offset-6">{{item.FirstPrice}} ₪</div>
-                            <div class="col-md-3">המחיר הטוב ביותר:</div>
-                        </div>
+                        <div ng-show="isAskArea">
+                        
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-6">{{item.FirstPrice}} ₪</div>
+                                <div class="col-md-3">המחיר הטוב ביותר:</div>
+                            </div>
                 
-                        <div class="row">
-                            <div class="col-md-3 col-md-offset-6">{{firstAsk.Username}}</div>
-                            <div class="col-md-3">שם המוכר:</div>
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-6">{{firstAsk.Username}}</div>
+                                <div class="col-md-3">שם המוכר:</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-6">
+                                    <a href="mailto:{{firstAsk.Email}}?subject=מכרז שהסתיים באתר בידיט&body=שלום רב, אני פונה אליך בשל סיום המכרז באתר בידיט">
+                                        {{firstAsk.Email}}
+                                    </a>
+                                </div>
+                                <div class="col-md-3">מייל המוכר:</div>
+                            </div>
+                    
+                            <div class="row">
+                                <div class="col-md-3 col-md-offset-6">{{firstAsk.Phone}}</div>
+                                <div class="col-md-3">טלפון המוכר:</div>
+                            </div>
+                    
+                        </div>
+                        
+                        <div ng-show="!isAskArea">
+                            אין מוכרים במכרז
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-3 col-md-offset-6">
-                                <a href="mailto:{{firstAsk.Email}}?subject=מכרז שהסתיים באתר בידיט&body=שלום רב, אני פונה אליך בשל סיום המכרז באתר בידיט">
-                                    {{firstAsk.Email}}
-                                </a>
-                            </div>
-                            <div class="col-md-3">מייל המוכר:</div>
-                        </div>
-                    
-                        <div class="row">
-                            <div class="col-md-3 col-md-offset-6">{{firstAsk.Phone}}</div>
-                            <div class="col-md-3">טלפון המוכר:</div>
-                        </div>
-                    
                     </b>
 
                 </div>
