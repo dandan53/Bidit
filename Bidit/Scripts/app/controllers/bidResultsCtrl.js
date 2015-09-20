@@ -79,5 +79,11 @@
         $location.path('/privatearea/' + $scope.isBidUser);
     };
 
+    //Rate
+    $scope.rate = function () {
+        if ($scope.firstAsk != null) {
+            $location.path('/rate/' + $scope.firstAsk.CID);
+        }
+    };
 });
 
