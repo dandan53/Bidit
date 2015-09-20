@@ -1,4 +1,4 @@
-﻿app.controller('NewbidCtrl', function ($scope, $location, $routeParams, Login, bidService, userDataService) {
+﻿app.controller('NewbidCtrl', function ($scope, $location, $routeParams, $timeout, Login, bidService, userDataService) {
     $scope.user = userDataService.getUserData();
 
     $scope.options = getCategories();
@@ -52,7 +52,6 @@
 
                                     }
                                 );
-
             }
         } else {
             alert('יש להיכנס למערכת');
@@ -61,11 +60,20 @@
     };
 
     // I load the remote data from the server.
+    function loadRemoteData()
+    {
+        $scope.isAlertSuccess = true;
 
-    function loadRemoteData() {
-        $location.url('/');
+        $timeout(function () { $scope.alertTimeout(); }, 1500);
     };
-    
+
+    $scope.alertTimeout = function () {
+     //   $scope.isAlertSuccess = false;
+        $scope.closeNewBidForm();
+    };
+
+    $scope.isAlertSuccess = false;
+
     $scope.closeNewBidForm = function () {
         $location.url('/');
     };

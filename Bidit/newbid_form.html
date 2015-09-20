@@ -14,21 +14,21 @@
                 
                     <br/>
 
-                   <div class="row">
-                       <select class="col-md-3 col-md-offset-6" ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"/>
+                    <div class="row">
+                        <select class="col-md-3 col-md-offset-6" ng-model="selectedSubOption" ng-options="option.name for option in subOptions" ng-change="update_selected_subOption()"/>
                         <div class="col-md-3">תת קטגוריה:</div>
                     </div>
 
-                     <br/>
+                    <br/>
 
-                   <div class="row">
-                       <select class="col-md-3 col-md-offset-6" ng-model="selectedProduct" ng-options="option.name for option in products"/>
+                    <div class="row">
+                        <select class="col-md-3 col-md-offset-6" ng-model="selectedProduct" ng-options="option.name for option in products"/>
                         <div class="col-md-3">מוצר:</div>
                     </div>
                     
                     <br/>
                     
-                     <div class="row">
+                    <div class="row">
                         <input class="col-md-3 col-md-offset-6" type="number" data-ng-model="amount"  min="1"/>
                         <div class="col-md-3">כמות:</div>
                     </div>
@@ -50,4 +50,9 @@
             </div>
         </div>
     </div>
+    
+    <div class="alert alert-success" id="successAlert" ng-show="isAlertSuccess === true">
+    המכרז התווסף בהצלחה!
+  </div>
+
 </div>

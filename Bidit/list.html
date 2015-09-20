@@ -91,19 +91,23 @@
         
         <!-- Paging -->
         <div class="row">
-            <div class="col-sm-8"> <!-- מציג מכרזים {{lastDisplayedItemIndex}} - {{firstDisplayedItemIndex}} מתוך {{numOfItems}} מכרזים  -->
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <!-- מציג מכרזים {{lastDisplayedItemIndex}} - {{firstDisplayedItemIndex}} מתוך {{numOfItems}} מכרזים  -->
                 <div class="dataTables_info" role="status" aria-live="polite">{{dataTableInfoText}}</div>
             </div>
-            <div class="col-sm-4">
-              <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
                     <ul class="pagination">
-                        <li class={{previousPageClass}} tabindex="0" id="Li1">
+                        <li class="{{previousPageClass}}" tabindex="0" id="Li1">
                             <a href="" ng-click="showItemsInPreviousPage()">הקודם</a>
                         </li>
                         <li data-ng-repeat="page in pages" id="page_{{page}}" tabindex="0">
                             <a href="" ng-click="showItemsInPage(page)">{{ page }}</a>
                         </li>
-                        <li class={{nextPageClass}} tabindex="0" id="Li2">
+                        <li class="{{nextPageClass}}" tabindex="0" id="Li2">
                             <a href="" ng-click="showItemsInNextPage()">הבא</a>
                         </li>
                     </ul>
