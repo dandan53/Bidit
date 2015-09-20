@@ -714,6 +714,10 @@ namespace Bidit.Controllers
 
                 item.FirstAskCID = user3.CID;
                 CIDToUserDataDic[user3.CID].AskIdList.Add(item.Id);
+
+                int result = DateTime.Compare(DateTime.Now, item.DueDate);
+                bool isBidEnded = result > 0;
+                item.IsBidEnded = isBidEnded;
             }
         }
 
