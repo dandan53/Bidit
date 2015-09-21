@@ -816,6 +816,7 @@ namespace Bidit.Controllers
             if (fromUser != null && aboutUser != null)
             {
                 review.Id = CreateReviewId();
+                review.Date = new DateTime();
                 ReviewIdToReviewDataDic.Add(review.Id, review);
 
                 if (CIDToUserDataDic.ContainsKey(fromUser.CID))

@@ -12,5 +12,6 @@ namespace Bidit.Models
         public int AboutCID { get; set; }
         public decimal Rate { get; set; }
         public string Feedback { get; set; }
+        public DateTime Date { get; set; }
     }
 }
