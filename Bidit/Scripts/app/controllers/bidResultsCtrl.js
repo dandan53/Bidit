@@ -82,7 +82,7 @@
     //Rate
     $scope.rate = function () {
         if ($scope.firstAsk != null) {
-            $location.path('/rate/' + $scope.firstAsk.CID);
+            $location.path('/review/' + $scope.firstAsk.CID);
         }
     };
 });

@@ -17,7 +17,8 @@ namespace Bidit.Controllers
 
         private Dictionary<int, Item> HistoryItemIdToItemDic = new Dictionary<int, Item>();
 
-        
+        private Dictionary<int, ReviewData> ReviewIdToReviewDataDic = new Dictionary<int, ReviewData>();
+
         private static DAL instance = null;
 
         private DAL()
@@ -803,5 +804,207 @@ namespace Bidit.Controllers
             return retVal;
         }
         
+        //////////////  Reviews ////////////////    
+
+        public bool AddReview(ReviewData review)
+        {
+            bool retVal = false;
+            
+            User fromUser = GetUserByCID(review.FromCID);
+            User aboutUser = GetUserByCID(review.AboutCID);
+
+            if (fromUser != null && aboutUser != null)
+            {
+                review.Id = CreateReviewId();
+                ReviewIdToReviewDataDic.Add(review.Id, review);
+
+                if (CIDToUserDataDic.ContainsKey(fromUser.CID))
+                {
+                    if (CIDToUserDataDic[fromUser.CID].ReviewIdFromUserList == null)
+                    {
+                        CIDToUserDataDic[fromUser.CID].ReviewIdFromUserList = new List<int>();
+                    }
+
+                    CIDToUserDataDic[fromUser.CID].ReviewIdFromUserList.Add(review.Id);
+                }
+
+                if (CIDToUserDataDic.ContainsKey(aboutUser.CID))
+                {
+                    if (CIDToUserDataDic[aboutUser.CID].ReviewIdAboutUserList == null)
+                    {
+                        CIDToUserDataDic[aboutUser.CID].ReviewIdAboutUserList = new List<int>();
+                    }
+
+                    CIDToUserDataDic[aboutUser.CID].ReviewIdAboutUserList.Add(review.Id);
+                }
+
+                retVal = true;
+
+                //TBD - notify about the review
+                // NotifiySubscribers(item.ProductId, item);
+            }
+
+            return retVal;
+        }
+
+        //public void UpdateItem(ReviewData review)
+        //{
+        //    User user;
+        //    Item updatedItem;
+
+        //    // TBD - move the first to second, etc.
+
+        //    try
+        //    {
+        //        if (item.NewAskCID != 0)
+        //        {
+        //            if (item.NewAskCID == -1)
+        //            {
+        //                // remove item
+
+        //                user = GetUserByCID(item.BidCID);
+        //                updatedItem = GetItem(item.Id);
+        //                if (updatedItem != null && user != null)
+        //                {
+        //                    var userData = CIDToUserDataDic[item.BidCID];
+        //                    if (userData != null && userData.BidIdList != null && userData.BidIdList.Contains(item.Id))
+        //                    {
+        //                        // Bid user
+
+        //                        if (CIDToUserDataDic[user.CID].HistoryBidIdList == null)
+        //                        {
+        //                            CIDToUserDataDic[user.CID].HistoryBidIdList = new List<int>();
+        //                        }
+
+        //                        CIDToUserDataDic[user.CID].HistoryBidIdList.Add(item.Id);
+
+        //                        CIDToUserDataDic[user.CID].BidIdList.Remove(item.Id);
+
+        //                        // Ask users
+
+        //                        var firstAskUser = GetUserByCID(updatedItem.FirstAskCID);
+        //                        if (firstAskUser != null && CIDToUserDataDic[firstAskUser.CID] != null &&
+        //                            CIDToUserDataDic[firstAskUser.CID].AskIdList != null && CIDToUserDataDic[firstAskUser.CID].AskIdList.Contains(updatedItem.Id))
+        //                        {
+        //                            if (CIDToUserDataDic[firstAskUser.CID].HistoryAskIdList == null)
+        //                            {
+        //                                CIDToUserDataDic[firstAskUser.CID].HistoryAskIdList = new List<int>();
+        //                            }
+
+        //                            CIDToUserDataDic[firstAskUser.CID].HistoryAskIdList.Add(updatedItem.Id);
+
+        //                            CIDToUserDataDic[firstAskUser.CID].AskIdList.Remove(updatedItem.Id);
+        //                        }
+
+        //                        HistoryItemIdToItemDic.Add(item.Id, item);
+
+        //                        ItemIdToItemDic.Remove(item.Id);
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                // update price
+
+        //                user = GetUserByCID(item.NewAskCID);
+        //                updatedItem = GetItem(item.Id);
+        //                if (updatedItem != null && user != null)
+        //                {
+        //                    if (updatedItem.FirstPrice == 0 || item.NewPrice < updatedItem.FirstPrice)
+        //                    {
+        //                        updatedItem.FirstPrice = item.NewPrice;
+        //                        updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+        //                        updatedItem.FirstAskCID = user.CID;
+        //                    }
+        //                    else if (updatedItem.SecondPrice == 0 || item.NewPrice < updatedItem.SecondPrice)
+        //                    {
+        //                        updatedItem.SecondPrice = item.NewPrice;
+        //                        //updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+        //                        updatedItem.SecondAskCID = user.CID;
+        //                    }
+        //                    else if (updatedItem.ThirdPrice == 0 || item.NewPrice < updatedItem.ThirdPrice)
+        //                    {
+        //                        updatedItem.ThirdPrice = item.NewPrice;
+        //                        // updatedItem.FirstPriceDisplay = item.NewPrice.ToString();
+        //                        updatedItem.ThirdAskCID = user.CID;
+        //                    }
+
+        //                    if (CIDToUserDataDic.ContainsKey(user.CID))
+        //                    {
+        //                        if (CIDToUserDataDic[user.CID].AskIdList == null)
+        //                        {
+        //                            CIDToUserDataDic[user.CID].AskIdList = new List<int>();
+        //                        }
+
+        //                        CIDToUserDataDic[user.CID].AskIdList.Add(updatedItem.Id);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // update item
+
+        //            user = GetUserByCID(item.BidCID);
+        //            updatedItem = GetItem(item.Id);
+        //            if (updatedItem != null && user != null)
+        //            {
+        //                updatedItem.Amount = item.Amount;
+        //                updatedItem.DueDate = item.DueDate;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        var ex = exception.ToString();
+        //    }
+        //}
+
+        public Dictionary<int, ReviewData> GetReviewsByAboutCID(int CID)
+        {
+            Dictionary<int, ReviewData> retVal = null;
+
+            try
+            {
+                if (CIDToUserDataDic.ContainsKey(CID))
+                {
+                    var reviewIdAboutUserList = CIDToUserDataDic[CID].ReviewIdAboutUserList;
+                    if (reviewIdAboutUserList != null && reviewIdAboutUserList.Count > 0)
+                    {
+                        retVal = new Dictionary<int, ReviewData>();
+                        
+                        foreach (int id in reviewIdAboutUserList)
+                        {
+                            if (ReviewIdToReviewDataDic.ContainsKey(id))
+                            {
+                                retVal.Add(id, ReviewIdToReviewDataDic[id]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return retVal;
+        }
+
+        private int CreateReviewId()
+        {
+            int retVal = 0;
+
+            foreach (var review in ReviewIdToReviewDataDic)
+            {
+                if (review.Key > retVal)
+                {
+                    retVal = review.Key;
+                }
+            }
+
+            retVal++;
+
+            return retVal;
+        }
     }
 }

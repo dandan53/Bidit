@@ -11,7 +11,7 @@ app.config(function ($routeProvider) {
          when('/bidresults/:id/:isBidUser', { controller: 'BidResultsCtrl', templateUrl: 'bidresults.html' }).
          when('/signup', { controller: 'SignupCtrl', templateUrl: 'signup.html' }).
          when('/settings', { controller: 'SettingsCtrl', templateUrl: 'settings.html' }).
-         when('/rate/:CID/', { controller: 'RateCtrl', templateUrl: 'rate.html' }).
+         when('/review/:CID/', { controller: 'ReviewCtrl', templateUrl: 'review.html' }).
          otherwise({ redirectTo: '/' });
 });
 

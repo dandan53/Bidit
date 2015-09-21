@@ -25,7 +25,8 @@ namespace Bidit.Controllers
                 {
                     results.FirstAsk = new User() {Username = firstAskUser.Username, 
                                                     Email = firstAskUser.Email, 
-                                                    Phone = firstAskUser.Phone};
+                                                    Phone = firstAskUser.Phone,
+                                                    CID = firstAskUser.CID};
                 }
             }
 
