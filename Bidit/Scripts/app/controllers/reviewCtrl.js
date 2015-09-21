@@ -58,7 +58,7 @@
     $scope.isAlertSuccess = false;
 
     $scope.closeForm = function () {
-        $location.url('/');
+        $location.path('/privatearea/' + $scope.isBidUser);
     };
     
 });
