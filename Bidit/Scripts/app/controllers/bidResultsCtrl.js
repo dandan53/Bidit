@@ -85,5 +85,11 @@
             $location.path('/review/' + $scope.firstAsk.CID);
         }
     };
+    
+    $scope.reviews = function () {
+        if ($scope.firstAsk != null) {
+            $location.path('/reviews/' + $scope.firstAsk.CID);
+        }
+    };
 });
 

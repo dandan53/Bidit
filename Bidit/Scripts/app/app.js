@@ -12,6 +12,7 @@ app.config(function ($routeProvider) {
          when('/signup', { controller: 'SignupCtrl', templateUrl: 'signup.html' }).
          when('/settings', { controller: 'SettingsCtrl', templateUrl: 'settings.html' }).
          when('/review/:CID/', { controller: 'ReviewCtrl', templateUrl: 'review.html' }).
+         when('/reviews/:CID/', { controller: 'ReviewsCtrl', templateUrl: 'reviews.html' }).
          otherwise({ redirectTo: '/' });
 });
 

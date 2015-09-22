@@ -991,6 +991,36 @@ namespace Bidit.Controllers
             return retVal;
         }
 
+        public decimal GetAverageRateByCID(int CID)
+        {
+            decimal retVal = 0;
+
+            try
+            {
+                if (CIDToUserDataDic.ContainsKey(CID))
+                {
+                    var reviewIdAboutUserList = CIDToUserDataDic[CID].ReviewIdAboutUserList;
+                    if (reviewIdAboutUserList != null && reviewIdAboutUserList.Count > 0)
+                    {
+                        foreach (int id in reviewIdAboutUserList)
+                        {
+                            if (ReviewIdToReviewDataDic.ContainsKey(id))
+                            {
+                                retVal += ReviewIdToReviewDataDic[id].Rate;
+                            }
+                        }
+
+                        retVal /= reviewIdAboutUserList.Count;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return retVal;
+        }
+
         private int CreateReviewId()
         {
             int retVal = 0;

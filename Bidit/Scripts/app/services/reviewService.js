@@ -2,7 +2,8 @@
 
     // Return public API.
     return ({
-        rate: rate
+        rate: rate,
+        getReviews: getReviews
     });
 
 
@@ -25,6 +26,20 @@
         });
 
         return (request.then(handleSuccess, handleError));
+    }
+
+    function getReviews(data) {
+
+        var request = $http({
+            method: "get",
+            url: "/api/review/",
+            params: {
+                CID: data.CID
+            }
+        });
+
+        return (request.then(handleSuccess, handleError));
+
     }
 
     // ---
