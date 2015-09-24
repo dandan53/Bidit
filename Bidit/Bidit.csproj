@@ -224,6 +224,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="bidresults.html" />
     <Content Include="bidresults_form.html" />
+    <Content Include="Copy of reviews_form.html" />
     <Content Include="reviews.html" />
     <Content Include="reviews_form.html" />
     <Content Include="review.html" />

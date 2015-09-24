@@ -35,7 +35,16 @@
     {
         if (data != null) {
             $scope.reviews = data;
-            //$scope.averageRate = data.AverageRate;
+
+            if ($scope.reviews != null && $scope.reviews.length > 0) {
+                var len = $scope.reviews.length;
+                var sum = 0;
+                for (var i = 0; i < len; i++) {
+                    sum += $scope.reviews[i].Rate;
+                }
+
+                $scope.averageRate = sum / len;
+            }
         }
     };
 

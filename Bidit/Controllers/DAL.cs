@@ -811,7 +811,7 @@ namespace Bidit.Controllers
         private void InitReviews()
         {
             var reviewsCtrl = new ReviewController();
-            reviewsCtrl.Post(new ReviewRequest() {FromCID = 1, AboutCID = 3, Feedback = "המוכר ממש נחמד ואדיב. שירות ממש מעולה. יישר כח.", Rate = 5});
+            reviewsCtrl.Post(new ReviewRequest() {FromCID = 1, AboutCID = 3, Feedback = "אני חושב שהמוכר ממש נחמד וצריך לעבוד איתו. אם שואלים אותי אני ממליץ בחום. המוכר ממש נחמד ואדיב. שירות ממש מעולה. יישר כח.", Rate = 5});
             reviewsCtrl.Post(new ReviewRequest() { FromCID = 2, AboutCID = 3, Feedback = "המוכר ממש לא נחמד. שירות גרוע. להתרחק ממנו..", Rate = 1 });
         }
 
