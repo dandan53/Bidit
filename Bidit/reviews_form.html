@@ -39,14 +39,46 @@
                                             </div>
                                             
                                             <div class="row" >
-                                              <div class="col-md-12">
+                                              <div class="col-md-9">
                                                   
-                                                  <span class="glyphicon glyphicon-star" ></span>
-                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                   <span class="glyphicon glyphicon-star-empty" aria-hidden="true" 
+                                                        ng-hide="review.Rate === 1 || review.Rate === 2 ||
+                                                                 review.Rate === 3 || review.Rate === 4 ||
+                                                                 review.Rate === 5"></span>
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
+                                                        ng-hide="review.Rate === 2 || review.Rate === 3 || 
+                                                                 review.Rate === 4 || review.Rate === 5"></span>
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
+                                                        ng-hide="review.Rate === 3 || review.Rate === 4 || 
+                                                                 review.Rate === 5"></span>
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
+                                                        ng-hide="review.Rate === 4 || review.Rate === 5"></span>
+                                                   <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
+                                                        ng-hide="review.Rate === 5"></span>
+                                                  
+                                                  <span class="glyphicon glyphicon-star" aria-hidden="true" 
+                                                        ng-show="review.Rate === 1 || review.Rate === 2 ||
+                                                                 review.Rate === 3 || review.Rate === 4 ||
+                                                                 review.Rate === 5"></span>
+                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"
+                                                        ng-show="review.Rate === 2 || review.Rate === 3 || 
+                                                                 review.Rate === 4 || review.Rate === 5"></span>
+                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"
+                                                        ng-show="review.Rate === 3 || review.Rate === 4 || 
+                                                                 review.Rate === 5"></span>
+                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"
+                                                        ng-show="review.Rate === 4 || review.Rate === 5"></span>
+                                                   <span class="glyphicon glyphicon-star" aria-hidden="true"
+                                                        ng-show="review.Rate === 5"></span>
+
+                                                  <!--
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>    
                                                   <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>                                                  
-                                                  
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>                                                  
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>                                                  
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>    -->                                              
                                               </div>
-                                          <!--    <div class="col-md-3">דרג את המוכר:</div> -->
+                                              <div class="col-md-3">דירוג:</div>
                                           </div>
 
                                         </div>
