@@ -37,6 +37,18 @@
                                             <div>
                                                 דירוג: {{review.Rate}}
                                             </div>
+                                            
+                                            <div class="row" >
+                                              <div class="col-md-12">
+                                                  
+                                                  <span class="glyphicon glyphicon-star" ></span>
+                                                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>                                                  
+                                                  
+                                              </div>
+                                          <!--    <div class="col-md-3">דרג את המוכר:</div> -->
+                                          </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -64,6 +76,28 @@
 
 <style>
     
+
+    i.star {
+        background-image: url(Scripts/bootstrap/img/glyphicons-halflings-white.png/star-sprite.png);
+	/*background-image: url(../img/star-sprite.png);*/
+	display: inline-block;
+	height: 16px;
+	width: 80px;
+	background-position-x: -80px;
+	background-position-y: -48px;
+}
+
+i.star-1    { background-position-x: -64px; }
+i.star-2    { background-position-x: -48px; }
+i.star-3    { background-position-x: -32px; }
+i.star-4    { background-position-x: -16px; }
+i.star-5    { background-position-x: 0; }
+i.star-qtr  { background-position-y: -32px; }
+i.star-half { background-position-y: -16px; }
+i.star-3qtr { background-position-y: 0; }
+
+
+
     .rating {
     float:left;
 }
