@@ -75,6 +75,25 @@
 
                             <br/>                            
                             
+                            <div class="row">
+                                <div class="col-md-9">
+
+                                    <div class="Stars">
+                                        <span style="{{getWidth()}}"></span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3">  דירוג המוכר: </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-9">({{numOfReviews}} חוות דעת)</div>
+                                <div class="col-md-3"></div>
+                            </div>
+
+                            <br />
+
+
                             <button type="button" class="btn btn-info" ng-click="reviews()">דירוגי המוכר</button>
                             <button type="button" class="btn btn-info" ng-click="rate()">דרג את המוכר</button>
 
@@ -102,3 +121,27 @@
     </div>
 
 </div>
+
+<style>
+
+     .Stars span {
+    display: inline-block;
+    height: 16px;
+    max-width: 93px;
+    float: right;
+    background: url("pix/Star-Yellow.PNG") no-repeat right transparent;
+    direction: rtl;
+}
+
+
+	.Stars {
+    display: inline-block;
+    float: right;
+    width: 93px;
+    height: 18px;
+    background: url("pix/Star-Gray.PNG") no-repeat;
+    direction: rtl;
+    margin-left: 10px;
+}
+
+</style>
