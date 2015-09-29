@@ -37,50 +37,15 @@
                                                 תאריך: {{review.Date | date:largeDate}}
                                             </div>
                                            
-                                            <!-- <div class="row" > -->
-                                            <!-- <div class="col-md-9"> -->
-                                            <div>
-                                                דירוג:  
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    
+                                                    <div class="Stars">
+                                                    <span style="{{getWidth(review.Rate)}}"></span>
+                                                </div>
 
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
-                                                    ng-hide="review.Rate === 1 || review.Rate === 2 ||
-                                                                 review.Rate === 3 || review.Rate === 4 ||
-                                                                 review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
-                                                    ng-hide="review.Rate === 2 || review.Rate === 3 || 
-                                                                 review.Rate === 4 || review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
-                                                    ng-hide="review.Rate === 3 || review.Rate === 4 || 
-                                                                 review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
-                                                    ng-hide="review.Rate === 4 || review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"
-                                                    ng-hide="review.Rate === 5"></span>
-
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"
-                                                    ng-show="review.Rate === 1 || review.Rate === 2 ||
-                                                                 review.Rate === 3 || review.Rate === 4 ||
-                                                                 review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"
-                                                    ng-show="review.Rate === 2 || review.Rate === 3 || 
-                                                                 review.Rate === 4 || review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"
-                                                    ng-show="review.Rate === 3 || review.Rate === 4 || 
-                                                                 review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"
-                                                    ng-show="review.Rate === 4 || review.Rate === 5"></span>
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"
-                                                    ng-show="review.Rate === 5"></span>
-
-                                                <!--
-                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>    
-                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>                                                  
-                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>                                                  
-                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>                                                  
-                                                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>    -->
-                                                <!-- </div>
-                                                    <div class="col-md-3">דירוג:</div> -->
-
+                                                </div>
+                                                <div class="col-md-3"> דירוג: </div>
                                             </div>
 
                                             <div class="row">
@@ -111,106 +76,30 @@
         </div>
 
     </div>
+    
+    
+ 
+    
+<style>
+
+     .Stars span {
+    display: inline-block;
+    height: 16px;
+    max-width: 93px;
+    float: right;
+    background: url("pix/Star-Yellow.PNG") no-repeat right transparent;
+    direction: rtl;
+}
 
 
-    <style>
-        i.star {
-            background-image: url(Scripts/bootstrap/img/glyphicons-halflings-white.png/star-sprite.png);
-            /*background-image: url(../img/star-sprite.png);*/
-            display: inline-block;
-            height: 16px;
-            width: 80px;
-            background-position-x: -80px;
-            background-position-y: -48px;
-        }
+	.Stars {
+    display: inline-block;
+    float: right;
+    width: 93px;
+    height: 18px;
+    background: url("pix/Star-Gray.PNG") no-repeat;
+    direction: rtl;
+    margin-left: 10px;
+}
 
-        i.star-1 {
-            background-position-x: -64px;
-        }
-
-        i.star-2 {
-            background-position-x: -48px;
-        }
-
-        i.star-3 {
-            background-position-x: -32px;
-        }
-
-        i.star-4 {
-            background-position-x: -16px;
-        }
-
-        i.star-5 {
-            background-position-x: 0;
-        }
-
-        i.star-qtr {
-            background-position-y: -32px;
-        }
-
-        i.star-half {
-            background-position-y: -16px;
-        }
-
-        i.star-3qtr {
-            background-position-y: 0;
-        }
-
-
-
-        .rating {
-            float: left;
-        }
-
-            /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
-   follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
-            .rating:not(:checked) > input {
-                position: absolute;
-                top: -9999px;
-                clip: rect(0,0,0,0);
-            }
-
-            .rating:not(:checked) > label {
-                float: right;
-                width: 1em;
-                padding: 0 .1em;
-                overflow: hidden;
-                white-space: nowrap;
-                cursor: pointer;
-                font-size: 200%;
-                line-height: 1.2;
-                color: #ddd;
-                text-shadow: 1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
-            }
-
-                .rating:not(:checked) > label:before {
-                    content: '★ ';
-                }
-
-            .rating > input:checked ~ label {
-                color: #f70;
-                text-shadow: 1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
-            }
-
-            .rating:not(:checked) > label:hover,
-            .rating:not(:checked) > label:hover ~ label {
-                color: gold;
-                text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-            }
-
-            .rating > input:checked + label:hover,
-            .rating > input:checked + label:hover ~ label,
-            .rating > input:checked ~ label:hover,
-            .rating > input:checked ~ label:hover ~ label,
-            .rating > label:hover ~ input:checked ~ label {
-                color: #ea0;
-                text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-            }
-
-            .rating > label:active {
-                position: relative;
-                top: 2px;
-                left: 2px;
-            }
-    </style>
+</style>

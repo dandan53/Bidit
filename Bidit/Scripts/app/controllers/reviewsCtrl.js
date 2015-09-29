@@ -48,10 +48,15 @@
         }
     };
 
+    $scope.getWidth = function (rate) {
+        var width = (rate / 5) * 93;
+        var style = "width: " + width + "px";
+        return style;
+    };
+
    $scope.closeForm = function () {
         //$location.path('/privatearea/' + $scope.isBidUser);
     };
-
 
     $scope.getReviews();
 });
