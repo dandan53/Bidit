@@ -7,13 +7,10 @@ C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Microsoft.D
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Newtonsoft.Json.dll
-C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Net.Http.Formatting.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Spatial.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Helpers.dll
-C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Http.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Http.OData.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Http.Tracing.dll
-C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Http.WebHost.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Mvc.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Optimization.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Providers.dll
@@ -24,10 +21,7 @@ C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\WebGrease.dll
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\EntityFramework.xml
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\Newtonsoft.Json.xml
-C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Net.Http.Formatting.xml
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Helpers.xml
-C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Http.xml
-C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Http.WebHost.xml
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Mvc.xml
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.Razor.xml
 C:\Users\danda\documents\visual studio 2012\Projects\Bidit\Bidit\bin\System.Web.WebPages.xml

@@ -2,17 +2,17 @@
     
 app.config(function ($routeProvider) {
     $routeProvider.
-         when('/', { controller: 'ListCtrl', templateUrl: 'main.html' }).
-         when('/privatearea/:isBidUser', { controller: 'ListCtrl', templateUrl: 'main.html' }).
-         when('/login', { controller: 'LoginCtrl', templateUrl: 'login.html' }).
-         when('/newbid', { controller: 'NewbidCtrl', templateUrl: 'newbid.html' }).
-         when('/pricebid/:id', { controller: 'PricebidCtrl', templateUrl: 'pricebid.html' }).
-         when('/editbid/:id/:isBidUser', { controller: 'EditbidCtrl', templateUrl: 'editbid.html' }).
-         when('/bidresults/:id/:isBidUser', { controller: 'BidResultsCtrl', templateUrl: 'bidresults.html' }).
-         when('/signup', { controller: 'SignupCtrl', templateUrl: 'signup.html' }).
-         when('/settings', { controller: 'SettingsCtrl', templateUrl: 'settings.html' }).
-         when('/review/:CID/', { controller: 'ReviewCtrl', templateUrl: 'review.html' }).
-         when('/reviews/:CID/', { controller: 'ReviewsCtrl', templateUrl: 'reviews.html' }).
+         when('/', { controller: 'ListCtrl', templateUrl: 'app/main/main.html' }).
+         when('/privatearea/:isBidUser', { controller: 'ListCtrl', templateUrl: 'app/main/main.html' }).
+         when('/login', { controller: 'LoginCtrl', templateUrl: 'app/login/login.html' }).
+         when('/newbid', { controller: 'NewbidCtrl', templateUrl: 'app/newBid/newbid.html' }).
+         when('/pricebid/:id', { controller: 'PricebidCtrl', templateUrl: 'app/priceBid/pricebid.html' }).
+         when('/editbid/:id/:isBidUser', { controller: 'EditbidCtrl', templateUrl: 'app/editBid/editbid.html' }).
+         when('/bidresults/:id/:isBidUser', { controller: 'BidResultsCtrl', templateUrl: 'app/bidResults/bidresults.html' }).
+         when('/signup', { controller: 'SignupCtrl', templateUrl: 'app/signup/signup.html' }).
+         when('/settings', { controller: 'SettingsCtrl', templateUrl: 'app/settings/settings.html' }).
+         when('/review/:CID/', { controller: 'ReviewCtrl', templateUrl: 'app/review/review.html' }).
+         when('/reviews/:CID/', { controller: 'ReviewsCtrl', templateUrl: 'app/reviews/reviews.html' }).
          otherwise({ redirectTo: '/' });
 });
 
